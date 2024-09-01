@@ -2,6 +2,10 @@
 import UserIcon from '@components/UserIcon.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import Download from '@components/icons/Download.astro';
+import Work from '@components/icons/Work.astro';
+import Instagram from '@components/icons/Instagram.astro';
+import Github from '@components/icons/Github.astro';
+import Linkedin from '@components/icons/Linkedin.astro';
 ---
 
 <MainLayout title='Portfolio'>
@@ -13,18 +17,32 @@ import Download from '@components/icons/Download.astro';
         <p><b class='tracking-wider'>Hi</b> I'm Dario, a front end developer based in Sassari.</p>
         <p>I love creating responsive UI and performant web app using TypeScript, React, and NextJs.</p>
       </div>
+      <div class="flex gap-2 items-center">
+        <Instagram/>
+        <Github/>
+        <Linkedin/>
+      </div>
     </article>
   </section>
-  <section class='sm:max-w-sm'>
+  <section class='sm:max-w-sm pt-4'>
     <article>
-      <h3 class='text-2xl font-mono font-semibold tracking-wide'>JOBS</h3>
+      <h3 class='text-2xl font-mono font-semibold tracking-wide flex gap-2 items-end'><Work /> Work</h3>
       <ul class='space-y-2 pt-4'>
         <li class='grid grid-cols-2'>
-          <div><p>Abinsula</p><p class='text-zinc-200/20'>Frontend Developer</p></div>
+          <div>
+            <a href='https://abinsula.com' target='_blank' rel='noreferrer'>Abinsula</a><p class='text-zinc-200/20'>
+              Frontend Developer
+            </p>
+          </div>
           <small class='text-end font-mono'>2022 - current</small>
         </li>
         <li class='grid grid-cols-2'>
-          <div><p>Energy Team</p><p class='text-zinc-200/20'>Fullstack Developer</p></div>
+          <div>
+            <a href='https://www.energyteam.it/' target='_blank' rel='noreferrer'>Energy Team</a><p
+              class='text-zinc-200/20'>
+              Fullstack Developer
+            </p>
+          </div>
           <small class='text-end font-mono'>2019 - 2022</small>
         </li>
       </ul>
@@ -34,7 +52,10 @@ import Download from '@components/icons/Download.astro';
     <a href='favicon.svg' class='col-span-10 shadow shadow-zinc-200/20 rounded-l-lg grid place-items-center' download>
       View CV
     </a>
-    <a class='col-span-2 shadow shadow-zinc-200/20 bg-zinc-200 rounded-r-lg grid place-items-center' download aria-label='Download'>
+    <a
+      class='col-span-2 shadow shadow-zinc-200/20 bg-zinc-200 rounded-r-lg grid place-items-center'
+      download
+      aria-label='Download'>
       <Download />
     </a>
   </section>
