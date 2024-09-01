@@ -10,7 +10,7 @@ const links = ['about', 'blog', 'projects', 'TIL'];
 const isCurrentPage = (href: string) => {
   return pathname === `/${href}`;
 };
-const isHomePage = isCurrentPage('');
+const hiddenUserIcon = isCurrentPage('about') || isCurrentPage('');
 Astro.response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
 Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, max-age=31536000, s-maxage=31536000');
 ---
@@ -25,70 +25,79 @@ Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, max-ag
     <title>{title}</title>
   </head>
   <body class='min-h-dvh bg-zinc-800 text-zinc-200'>
-    <div class='container mx-auto px-4 py-8 flex flex-col gap-8'>
+    <div class='container mx-auto py-8 px-6 flex flex-col gap-8'>
       <header class='w-full flex md:gap-16 md:justify-center items-center relative'>
-        {!isHomePage && <UserIcon /> }
+        {!hiddenUserIcon && <UserIcon />}
         <nav
           class='hidden md:flex justify-center gap-8 rounded-full font-semibold w-min px-8 py-2 shadow-zinc-200/20 shadow-[12px_12px_12px_-12px_-12px_-12px]'>
           {
             links.map((link) => (
               <a
                 data-astro-prefetch
-                href={isCurrentPage(link) ? '#' : link}
+                href={isCurrentPage(link) ? '#' : link.toLowerCase()}
                 class='hover:text-primary transition-colors p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'>
                 {link}
               </a>
             ))
           }
         </nav>
-        <button popovertarget="mypopover"  class='md:hidden fixed top-8 right-4 '>
-          <svg width='1.5rem' height='1.5rem' class="stroke-zinc-200 scale-x-[-1] active:scale-x-[-1.05] active:stroke-primary transition-colors" viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path
-              d='M4 6H20M4 12H14M4 18H9'
-              stroke-width='2'
-              stroke-linecap='round'
-              stroke-linejoin='round'>
-            </path>
+        <button popovertarget='mypopover' class='md:hidden fixed top-8 right-4'>
+          <svg
+            width='1.5rem'
+            height='1.5rem'
+            class='stroke-zinc-200 scale-x-[-1] active:scale-x-[-1.05] active:stroke-primary transition-colors'
+            viewBox='0 0 24 24'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'>
+            <path d='M4 6H20M4 12H14M4 18H9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
           </svg>
         </button>
         <div id='mypopover' popover class='m-0 w-full bg-transparent p-4'>
-          <div class='bg-zinc-700 rounded-lg p-4'>
-            <ul class='flex flex-col text-zinc-200 text-lg gap-2'>
-              {
-                links.map((link) => (
-                  <li>
-                    <a
-                      data-astro-prefetch
-                      href={isCurrentPage(link) ? '#' : link}
-                      class='hover:text-primary transition-colors p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'>
-                      {link}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
+          <div class='flex w-full justify-end'>
+            <div class='w-2/3 bg-zinc-700 rounded-lg p-4 relative'>
+              <button popovertarget='mypopover' class='font-mono text-current text-4xl font-bold absolute right-4'>
+                <svg
+                  width='1.5rem'
+                  height='1.5rem'
+                  class='stroke-zinc-200'
+                  viewBox='-0.5 0 25 25'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'>
+                  <path d='M3 21.32L21 3.32001' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'>
+                  </path>
+                  <path d='M3 3.32001L21 21.32' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'>
+                  </path>
+                </svg>
+              </button>
+              <ul class='flex flex-col text-zinc-200 text-lg gap-2'>
+                {
+                  links.map((link) => (
+                    <li>
+                      <a
+                        data-astro-prefetch
+                        href={isCurrentPage(link) ? '#' : link.toLowerCase()}
+                        class='hover:text-primary text-lg transition-colors p-1 duration-300 capitalize'>
+                        {link}
+                      </a>
+                    </li>
+                  ))
+                }
+                <a
+                  href='favicon.svg'
+                  class='hover:text-primary text-lg transition-colors p-1 duration-300 capitalize'
+                  download
+                  aria-label='Download'>
+                  CV
+                </a>
+              </ul>
+            </div>
           </div>
         </div>
-        <!-- <details class='md:hidden w-fit p-2 border' open>
-          <summary class=''>Details</summary>
-          <ul class='border'>
-            {
-              links.map((link) => (
-                <li>
-                  <a
-                    data-astro-prefetch
-                    href={isCurrentPage(link) ? '#' : link}
-                    class='hover:text-primary transition-colors p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'>
-                    {link}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </details> -->
       </header>
       <slot />
-      <footer class='w-full flex justify-center'></footer>
+      <footer class='w-full text-zinc-500 py-4 fixed bottom-0 left-0 text-center'>
+        Copyright © 2024 Dario Puddinu
+      </footer>
     </div>
   </body>
 </html>
@@ -109,5 +118,31 @@ Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, max-ag
   }
   details summary::-webkit-details-marker {
     display: none;
+  }
+</style>
+
+<style>
+  :root {
+    --popover-animation-duration: 0.3s;
+  }
+  [popover]:popover-open {
+    opacity: 1;
+  }
+  [popover] {
+    /* Final state of the exit animation */
+    opacity: 0;
+    transition:
+      opacity var(--popover-animation-duration) ease-in-out,
+      overlay var(--popover-animation-duration) allow-discrete,
+      display var(--popover-animation-duration) allow-discrete;
+  }
+  @starting-style {
+    [popover]:popover-open {
+      opacity: 0;
+    }
+  }
+
+  [popover]::backdrop {
+    backdrop-filter: blur(2px);
   }
 </style>

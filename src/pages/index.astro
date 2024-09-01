@@ -1,9 +1,41 @@
 ---
+import UserIcon from '@components/UserIcon.astro';
 import MainLayout from '../layouts/MainLayout.astro';
+import Download from '@components/icons/Download.astro';
 ---
 
-<MainLayout title="Portfolio">
-  
-  <section></section>
-  <footer></footer>
+<MainLayout title='Portfolio'>
+  <div class='pt-8'><UserIcon /></div>
+  <section>
+    <article class='flex flex-col gap-4'>
+      <h1 class='text-4xl font-bold font-mono max-w-[10em]'>Frontend Developer</h1>
+      <div class='max-w-[40em] text-lg flex flex-col gap-1 text-neutral-300'>
+        <p><b class='tracking-wider'>Hi</b> I'm Dario, a front end developer based in Sassari.</p>
+        <p>I love creating responsive UI and performant web app using TypeScript, React, and NextJs.</p>
+      </div>
+    </article>
+  </section>
+  <section class='sm:max-w-sm'>
+    <article>
+      <h3 class='text-2xl font-mono font-semibold tracking-wide'>JOBS</h3>
+      <ul class='space-y-2 pt-4'>
+        <li class='grid grid-cols-2'>
+          <div><p>Abinsula</p><p class='text-zinc-200/20'>Frontend Developer</p></div>
+          <small class='text-end font-mono'>2022 - current</small>
+        </li>
+        <li class='grid grid-cols-2'>
+          <div><p>Energy Team</p><p class='text-zinc-200/20'>Fullstack Developer</p></div>
+          <small class='text-end font-mono'>2019 - 2022</small>
+        </li>
+      </ul>
+    </article>
+  </section>
+  <section class='rounded sm:max-w-sm grid grid-cols-12 h-12 transition-transform active:scale-95 duration-300'>
+    <a href='favicon.svg' class='col-span-10 shadow shadow-zinc-200/20 rounded-l-lg grid place-items-center' download>
+      View CV
+    </a>
+    <a class='col-span-2 shadow shadow-zinc-200/20 bg-zinc-200 rounded-r-lg grid place-items-center' download aria-label='Download'>
+      <Download />
+    </a>
+  </section>
 </MainLayout>
