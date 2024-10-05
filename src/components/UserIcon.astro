@@ -11,7 +11,7 @@ const isHomePage = pathname === '/';
 {
   !hidden && (
     <div
-      class:list={[size === 'md' ? ['h-14 w-14'] : '', size === 'sm' ? ['h-8 w-8'] : '', size]}
+      class:list={[size === 'md' ? ['h-14 w-14 min-h-14 min-w-14'] : '', size === 'sm' ? ['h-8 w-8 min-h-8 min-w-8'] : '']}
       class='h-14 w-14 rounded-full shadow shadow-zinc-200/20 text-center place-content-center text-sm hover:shadow-primary/50 hover:text-primary transition-all duration-300'>
       <a transition:name='user-icon' href={isHomePage ? '#' : '/'} class='text-zinc-200'>
         D

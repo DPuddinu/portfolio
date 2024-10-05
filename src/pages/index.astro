@@ -6,57 +6,94 @@ import Work from '@components/icons/Work.astro';
 import Instagram from '@components/icons/Instagram.astro';
 import Github from '@components/icons/Github.astro';
 import Linkedin from '@components/icons/Linkedin.astro';
+import { getCollection } from 'astro:content';
+
+const blogPosts = await getCollection('blog');
 ---
 
 <MainLayout title='Portfolio'>
-  <div class='pt-8'><UserIcon /></div>
-  <section>
-    <article class='flex flex-col gap-4'>
-      <h1 class='text-4xl font-bold font-mono max-w-[10em]'>Frontend Developer</h1>
-      <div class='max-w-[40em] text-lg flex flex-col gap-1 text-neutral-300'>
-        <p><b class='tracking-wider'>Hi</b> I'm Dario, a front end developer based in Sassari.</p>
-        <p>I love creating responsive UI and performant web app using TypeScript, React, and NextJs.</p>
-      </div>
-      <div class="flex gap-2 items-center">
-        <Instagram/>
-        <Github/>
-        <Linkedin/>
-      </div>
-    </article>
-  </section>
-  <section class='sm:max-w-sm pt-4'>
-    <article>
-      <h3 class='text-2xl font-mono font-semibold tracking-wide flex gap-2 items-end'><Work /> Work</h3>
-      <ul class='space-y-2 pt-4'>
-        <li class='grid grid-cols-2'>
-          <div>
-            <a href='https://abinsula.com' target='_blank' rel='noreferrer'>Abinsula</a><p class='text-zinc-200/20'>
-              Frontend Developer
-            </p>
-          </div>
-          <small class='text-end font-mono'>2022 - current</small>
-        </li>
-        <li class='grid grid-cols-2'>
-          <div>
-            <a href='https://www.energyteam.it/' target='_blank' rel='noreferrer'>Energy Team</a><p
-              class='text-zinc-200/20'>
-              Fullstack Developer
-            </p>
-          </div>
-          <small class='text-end font-mono'>2019 - 2022</small>
-        </li>
-      </ul>
-    </article>
-  </section>
-  <section class='rounded sm:max-w-sm grid grid-cols-12 h-12 transition-transform active:scale-95 duration-300'>
-    <a href='favicon.svg' class='col-span-10 shadow shadow-zinc-200/20 rounded-l-lg grid place-items-center' download>
-      View CV
-    </a>
-    <a
-      class='col-span-2 shadow shadow-zinc-200/20 bg-zinc-200 rounded-r-lg grid place-items-center'
-      download
-      aria-label='Download'>
-      <Download />
-    </a>
-  </section>
+  <div class='py-8'><UserIcon /></div>
+  <div class='flex flex-wrap gap-16'>
+    <section>
+      <article class='flex flex-col gap-4'>
+        <h1 class='text-4xl font-bold font-mono max-w-[10em] xl:text-6xl'>Frontend Developer</h1>
+        <div class='max-w-[40em] text-lg flex flex-col gap-1 text-neutral-300 text-balance py-4'>
+          <p><b class='tracking-wider text-2xl'>Hi</b> I'm Dario, a front end developer based in Sassari.</p>
+          <p>I love creating performant web app using TypeScript, React, and NextJs.</p>
+          <small class='italic pt-2'>(although this website is built with Astro because is super cool and fast)</small>
+        </div>
+        <div class='flex gap-2 items-center'>
+          <Instagram />
+          <Github />
+          <Linkedin />
+        </div>
+        <div class='my-8'>
+          <ul>
+            {
+              blogPosts.map((entry) => (
+                <li class='grid sm:grid-cols-[auto,1fr] gap-2 sm:gap-4'>
+                  <div class='place-content-center sm:h-10'>
+                    <time
+                      datetime={entry.data.publishDate.toISOString()}
+                      class='font-semibold border-l border-slate-600/80 pl-2 text-slate-400'>
+                      {entry.data.publishDate.toLocaleDateString('en-US', {
+                        month: 'long',
+                        day: 'numeric',
+                        year: 'numeric'
+                      })}
+                    </time>
+                  </div>
+                  <div>
+                    <p class='text-2xl place-content-center font-semibold sm:min-h-10'>{entry.data.title}</p>
+                    <p class=''>{entry.data.description}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </article>
+    </section>
+    <section class='flex flex-col grow gap-8'>
+      <section class='sm:max-w-sm pt-4'>
+        <article>
+          <h3 class='text-2xl font-mono font-semibold tracking-wide flex gap-2 items-end'><Work /> Work</h3>
+          <ul class='space-y-2 pt-4'>
+            <li class='grid grid-cols-2'>
+              <div>
+                <a href='https://abinsula.com' target='_blank' rel='noreferrer'>Abinsula</a><p class='text-zinc-200/20'>
+                  Frontend Developer
+                </p>
+              </div>
+              <small class='text-end font-mono'>2022 - current</small>
+            </li>
+            <li class='grid grid-cols-2'>
+              <div>
+                <a href='https://www.energyteam.it/' target='_blank' rel='noreferrer'>Energy Team</a><p
+                  class='text-zinc-200/20'>
+                  Fullstack Developer
+                </p>
+              </div>
+              <small class='text-end font-mono'>2019 - 2022</small>
+            </li>
+          </ul>
+        </article>
+      </section>
+      <footer
+        class='rounded sm:max-w-xs grid grid-cols-12 h-8 text-sm transition-transform active:scale-95 duration-300'>
+        <a
+          href='favicon.svg'
+          class='col-span-10 shadow shadow-zinc-200/20 rounded-l-lg grid place-items-center'
+          download>
+          View CV
+        </a>
+        <a
+          class='col-span-2 shadow shadow-zinc-200/20 bg-zinc-200 rounded-r-lg grid place-items-center'
+          download
+          aria-label='Download'>
+          <Download />
+        </a>
+      </footer>
+    </section>
+  </div>
 </MainLayout>

@@ -1,0 +1,70 @@
+---
+type Props = {
+  links: string[];
+};
+const links = Astro.props.links;
+const isCurrentPage = (href: string) => {
+  return Astro.url.pathname === `/${href}`;
+};
+---
+
+<button popovertarget='mypopover' class='md:hidden fixed top-8 right-4'>
+  <svg
+    width='1.5rem'
+    height='1.5rem'
+    class='stroke-zinc-200 scale-x-[-1] active:scale-x-[-1.05] active:stroke-primary transition-colors'
+    viewBox='0 0 24 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'>
+    <path d='M4 6H20M4 12H14M4 18H9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
+  </svg>
+</button>
+<div id='mypopover' popover class='m-0 w-full bg-transparent p-4'>
+  <div class='flex w-full justify-end'>
+    <div class='w-full bg-zinc-700 rounded-lg p-4 relative'>
+      <button popovertarget='mypopover' class='font-mono text-current text-4xl font-bold absolute right-4'>
+        <svg
+          width='1rem'
+          height='1rem'
+          class='stroke-zinc-200'
+          viewBox='-0.5 0 25 25'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'>
+          <path d='M3 21.32L21 3.32001' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
+          <path d='M3 3.32001L21 21.32' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
+        </svg>
+      </button>
+      <ul class='flex flex-col text-zinc-200 gap-4 py-2'>
+        <li class='py-1'>
+          <a
+            data-astro-prefetch
+            href="/"
+            class='hover:text-primary font-semibold transition-colors p-1 duration-300 capitalize'>
+            Home
+          </a>
+          <div class='border-b-[0.5px] border-zinc-600 w-full pt-1'></div>
+        </li>
+        {
+          links.map((link) => (
+            <li class='py-1'>
+              <a
+                data-astro-prefetch
+                href={isCurrentPage(link) ? '#' : link.toLowerCase()}
+                class='hover:text-primary font-semibold transition-colors p-1 duration-300 capitalize'>
+                {link}
+              </a>
+              <div class='border-b-[0.5px] border-zinc-600 w-full pt-1' />
+            </li>
+          ))
+        }
+        <a
+          href='favicon.svg'
+          class='hover:text-primary border-b-[0.5px] border-zinc-600 text-zinc-200 font-semibold transition-colors p-1 duration-300 capitalize'
+          download
+          aria-label='Download'>
+          CV
+        </a>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,14 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import UserIcon from '@components/UserIcon.astro';
+import Menu from '@components/Menu.astro';
 type Props = {
   title: string;
 };
 const { title } = Astro.props;
-const { pathname } = Astro.url;
 const links = ['about', 'blog', 'projects', 'TIL'];
 const isCurrentPage = (href: string) => {
-  return pathname === `/${href}`;
+  return Astro.url.pathname === `/${href}`;
 };
 const hiddenUserIcon = isCurrentPage('about') || isCurrentPage('');
 Astro.response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
@@ -24,12 +24,18 @@ Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, max-ag
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class='min-h-dvh bg-zinc-800 text-zinc-200'>
-    <div class='container mx-auto py-8 px-6 flex flex-col gap-8'>
+  <body class='min-h-dvh bg-zinc-800 text-zinc-200 grid'>
+    <div class='container md:px-48 mx-auto py-8 px-6 space-y-8 grid grid-rows-[auto_1fr_auto]'>
       <header class='w-full flex md:gap-16 md:justify-center items-center relative'>
         {!hiddenUserIcon && <UserIcon />}
         <nav
           class='hidden md:flex justify-center gap-8 rounded-full font-semibold w-min px-8 py-2 shadow-zinc-200/20 shadow-[12px_12px_12px_-12px_-12px_-12px]'>
+          <a
+            data-astro-prefetch
+            href='/'
+            class='hover:text-primary transition-colors p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'>
+            Home
+          </a>
           {
             links.map((link) => (
               <a
@@ -41,63 +47,10 @@ Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, max-ag
             ))
           }
         </nav>
-        <button popovertarget='mypopover' class='md:hidden fixed top-8 right-4'>
-          <svg
-            width='1.5rem'
-            height='1.5rem'
-            class='stroke-zinc-200 scale-x-[-1] active:scale-x-[-1.05] active:stroke-primary transition-colors'
-            viewBox='0 0 24 24'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'>
-            <path d='M4 6H20M4 12H14M4 18H9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
-          </svg>
-        </button>
-        <div id='mypopover' popover class='m-0 w-full bg-transparent p-4'>
-          <div class='flex w-full justify-end'>
-            <div class='w-2/3 bg-zinc-700 rounded-lg p-4 relative'>
-              <button popovertarget='mypopover' class='font-mono text-current text-4xl font-bold absolute right-4'>
-                <svg
-                  width='1.5rem'
-                  height='1.5rem'
-                  class='stroke-zinc-200'
-                  viewBox='-0.5 0 25 25'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'>
-                  <path d='M3 21.32L21 3.32001' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'>
-                  </path>
-                  <path d='M3 3.32001L21 21.32' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'>
-                  </path>
-                </svg>
-              </button>
-              <ul class='flex flex-col text-zinc-200 text-lg gap-2'>
-                {
-                  links.map((link) => (
-                    <li>
-                      <a
-                        data-astro-prefetch
-                        href={isCurrentPage(link) ? '#' : link.toLowerCase()}
-                        class='hover:text-primary text-lg transition-colors p-1 duration-300 capitalize'>
-                        {link}
-                      </a>
-                    </li>
-                  ))
-                }
-                <a
-                  href='favicon.svg'
-                  class='hover:text-primary text-lg transition-colors p-1 duration-300 capitalize'
-                  download
-                  aria-label='Download'>
-                  CV
-                </a>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <Menu links={links} />
       </header>
-      <slot />
-      <footer class='w-full text-zinc-500 py-4 fixed bottom-0 left-0 text-center'>
-        Copyright © 2024 Dario Puddinu
-      </footer>
+      <main><slot /></main>
+      <footer class='w-full text-zinc-500 py-4 left-0 text-center text-sm'>Copyright © 2024 Dario Puddinu</footer>
     </div>
   </body>
 </html>
