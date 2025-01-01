@@ -1,32 +1,27 @@
 ---
-import UserIcon from '@components/UserIcon.astro';
-import MainLayout from '../layouts/MainLayout.astro';
 import Download from '@components/icons/Download.astro';
 import Work from '@components/icons/Work.astro';
-import Instagram from '@components/icons/Instagram.astro';
-import Github from '@components/icons/Github.astro';
-import Linkedin from '@components/icons/Linkedin.astro';
 import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
 
 const blogPosts = await getCollection('blog');
 ---
 
 <MainLayout title='Portfolio'>
-  <div class='py-8'><UserIcon /></div>
-  <div class='flex flex-wrap gap-16'>
+  <div class='grid md:grid-cols-[1fr,auto] gap-24'>
     <section>
       <article class='flex flex-col gap-4'>
-        <h1 class='text-4xl font-bold font-mono max-w-[10em] xl:text-6xl'>Frontend Developer</h1>
+        <h1 class='~text-4xl/6xl font-bold font-mono max-w-[10em]'>Dario Puddinu</h1>
+        <h2 class='~text-2xl/4xl font-bold font-mono text-zinc-200/20'>Senior Frontend Developer</h2>
         <div class='max-w-[40em] text-lg flex flex-col gap-1 text-neutral-300 text-balance py-4'>
-          <p><b class='tracking-wider text-2xl'>Hi</b> I'm Dario, a front end developer based in Sassari.</p>
-          <p>I love creating performant web app using TypeScript, React, and NextJs.</p>
-          <small class='italic pt-2'>(although this website is built with Astro because is super cool and fast)</small>
+          <p>Hello, I'm Dario, a frontend developer with over 5 years of experience based in Sassari.</p>
+          <p>I love creating performant web app using Angular, React, and NextJs.</p>
+          <p></p>
+          <small class='italic leading-5 pt-2'>
+            (although this portfolio is built with Astro because is super cool and fast)
+          </small>
         </div>
-        <div class='flex gap-2 items-center'>
-          <Instagram />
-          <Github />
-          <Linkedin />
-        </div>
+
         <div class='my-8'>
           <ul>
             {
@@ -54,10 +49,10 @@ const blogPosts = await getCollection('blog');
         </div>
       </article>
     </section>
-    <section class='flex flex-col grow gap-8'>
+    <section class='flex flex-col gap-8'>
       <section class='sm:max-w-sm pt-4'>
         <article>
-          <h3 class='text-2xl font-mono font-semibold tracking-wide flex gap-2 items-end'><Work /> Work</h3>
+          <h3 class='~text-2xl/4xl font-mono font-semibold tracking-wide flex gap-4 items-end'><Work /> Work</h3>
           <ul class='space-y-2 pt-4'>
             <li class='grid grid-cols-2'>
               <div>
@@ -77,23 +72,20 @@ const blogPosts = await getCollection('blog');
               <small class='text-end font-mono'>2019 - 2022</small>
             </li>
           </ul>
+          <div class='flex justify-end pt-8'>
+            <div
+              class='rounded rounded-l-lg hover:bg-zinc-200/20 flex shadow w-fit shadow-zinc-300/20 sm:max-w-xs h-8 text-sm transition-all active:scale-95 duration-300'>
+              <a href='favicon.svg' class='shadow px-4 text-lg place-content-center' download>Download CV</a>
+              <a
+                class='px-2 shadow bg-zinc-300 cursor-pointer rounded-r-lg place-content-center'
+                download
+                aria-label='Download'>
+                <Download />
+              </a>
+            </div>
+          </div>
         </article>
       </section>
-      <footer
-        class='rounded sm:max-w-xs grid grid-cols-12 h-8 text-sm transition-transform active:scale-95 duration-300'>
-        <a
-          href='favicon.svg'
-          class='col-span-10 shadow shadow-zinc-200/20 rounded-l-lg grid place-items-center'
-          download>
-          View CV
-        </a>
-        <a
-          class='col-span-2 shadow shadow-zinc-200/20 bg-zinc-200 rounded-r-lg grid place-items-center'
-          download
-          aria-label='Download'>
-          <Download />
-        </a>
-      </footer>
     </section>
   </div>
 </MainLayout>

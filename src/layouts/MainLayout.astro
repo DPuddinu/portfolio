@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import UserIcon from '@components/UserIcon.astro';
 import Menu from '@components/Menu.astro';
 type Props = {
@@ -11,13 +11,11 @@ const isCurrentPage = (href: string) => {
   return Astro.url.pathname === `/${href}`;
 };
 const hiddenUserIcon = isCurrentPage('about') || isCurrentPage('');
-Astro.response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
-Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, max-age=31536000, s-maxage=31536000');
 ---
 
 <html lang='en' class='min-h-dvh'>
   <head>
-    <ViewTransitions />
+    <ClientRouter />
     <meta charset='utf-8' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='viewport' content='width=device-width' />
@@ -25,7 +23,7 @@ Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, max-ag
     <title>{title}</title>
   </head>
   <body class='min-h-dvh bg-zinc-800 text-zinc-200 grid'>
-    <div class='container md:px-48 mx-auto py-8 px-6 space-y-8 grid grid-rows-[auto_1fr_auto]'>
+    <div class='container w-full ~max-w-[40rem/96rem] ~px-6/48 mx-auto py-8 space-y-8 grid grid-rows-[auto_1fr_auto]'>
       <header class='w-full flex md:gap-16 md:justify-center items-center relative'>
         {!hiddenUserIcon && <UserIcon />}
         <nav
@@ -49,8 +47,28 @@ Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, max-ag
         </nav>
         <Menu links={links} />
       </header>
-      <main><slot /></main>
-      <footer class='w-full text-zinc-500 py-4 left-0 text-center text-sm'>Copyright © 2024 Dario Puddinu</footer>
+      <main class='py-4'><slot /></main>
+      <footer class='w-full flex justify-center text-zinc-500 py-4 left-0 text-center text-sm'>
+        <div class='flex justify-between w-full max-w-2xl'>
+          <nav class='flex gap-4'>
+            <a
+              class='hover:text-blue-400 transition-colors'
+              href='https://github.com/dpuddinu'
+              target='_blank'
+              rel='noreferrer'>
+              Github
+            </a>
+            <a
+              class='hover:text-blue-400 transition-colors'
+              href='https://www.linkedin.com/in/dario-puddinu-2b1056160/'
+              target='_blank'
+              rel='noreferrer'>
+              Linkedin
+            </a>
+          </nav>
+          <span>Copyright © 2025 Dario Puddinu</span>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
