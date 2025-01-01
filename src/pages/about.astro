@@ -4,37 +4,74 @@ import Skills from '@components/icons/Skills.astro';
 ---
 
 <MainLayout title='About'>
-  <article>
-    <h3 class='~text-2xl/4xl font-mono font-semibold tracking-wide flex gap-4 items-end'><Skills /> Skills</h3>
-    <ul class='space-y-2 pt-4'>
-      <li class='grid grid-cols-2 text-lg text-neutral-300'>
-        <span>Angular</span>
-        <span class='text-yellow-400'>★★★★★</span>
-      </li>
-      <li class='grid grid-cols-2 text-lg text-neutral-300'>
-        <span>React</span>
-        <span class='text-yellow-400'>★★★★☆</span>
-      </li>
-      <li class='grid grid-cols-2 text-lg text-neutral-300'>
-        <span>Next.js</span>
-        <span class='text-yellow-400'>★★★★☆</span>
-      </li>
-      <li class='grid grid-cols-2 text-lg text-neutral-300'>
-        <span>JavaScript</span>
-        <span class='text-yellow-400'>★★★★★</span>
-      </li>
-      <li class='grid grid-cols-2 text-lg text-neutral-300'>
-        <span>TypeScript</span>
-        <span class='text-yellow-400'>★★★★☆</span>
-      </li>
-      <li class='grid grid-cols-2 text-lg text-neutral-300'>
-        <span>HTML & CSS</span>
-        <span class='text-yellow-400'>★★★★★</span>
-      </li>
-      <li class='grid grid-cols-2 text-lg text-neutral-300'>
-        <span>Tailwind CSS</span>
-        <span class='text-yellow-400'>★★★★☆</span>
-      </li>
-    </ul>
-  </article>
+  <div class='text-neutral-300 font-afacad'>
+    <h1 class='~text-4xl/6xl font-bold'>So, who am I?</h1>
+    <section class='grid md:grid-cols-[1fr_auto] gap-8'>
+      <article>
+        <p class='~pt-4/8 ~text-xl/2xl'>Sono Dario, uno sviluppatore frontend di 32 anni nato in Sardegna.</p>
+        <br />
+        <p>
+          Ho iniziato a programmare nel 2013 quando ho frequentato il corso di studi di Ingegneria Elettronica e
+          Informatica all'Università degli Studi di Pavia.
+        </p>
+        <p class='pt-2'>
+          Qui, ho iniziato a programmare in C e Assembly per poi passare a Java e JavaScript imparando concetti
+          fondamentali che utilizzo ogni giorno nel lavoro quali Principi SOLID, Design Patterns, Test driven
+          development.
+        </p>
+        <p class='pt-2'>
+          Durante il mio percorso ho avuto l'opportunità di lavorare in consulenza con diverse aziende, tra cui:
+          <ul class='list-disc list-inside [&>li]:text-zinc-400'>
+            <li>
+              <a href='https://www.alkemy.com/' target='_blank'>Alkemy</a>
+            </li>
+            <li>
+              <a href='https://www.repower.com/' target='_blank'>RePower</a>
+            </li>
+            <li>
+              <a href='https://www.abissi.eu/' target='_blank'>Abissi</a>
+            </li>
+            <li>
+              <a href='https://www.abinsula.com/' target='_blank'>Abinsula</a>
+            </li>
+            <li>
+              <a href='https://www.degustiamo.com/' target='_blank'>Degustiamo</a>
+            </li>
+            <li>
+              <a href='https://www.energyteam.it/' target='_blank'>EnergyTeam</a>
+            </li>
+          </ul>
+        </p>
+      </article>
+      <article>
+        <h3 class='~text-2xl/4xl font-mono font-semibold tracking-wide flex gap-4 items-end'><Skills /> Skills</h3>
+        <ul class='space-y-2 pt-4 text-neutral-300 text-lg'>
+          <li class='grid grid-cols-2'>
+            <span>Angular</span>
+            <span class='text-yellow-400'>★★★★☆</span>
+          </li>
+          <li class='grid grid-cols-2'>
+            <span>React</span>
+            <span class='text-yellow-400'>★★★★★</span>
+          </li>
+          <li class='grid grid-cols-2'>
+            <span>Next.js</span>
+            <span class='text-yellow-400'>★★★★★</span>
+          </li>
+          <li class='grid grid-cols-2'>
+            <span>JavaScript</span>
+            <span class='text-yellow-400'>★★★★★</span>
+          </li>
+          <li class='grid grid-cols-2'>
+            <span>TypeScript</span>
+            <span class='text-yellow-400'>★★★★☆</span>
+          </li>
+          <li class='grid grid-cols-2'>
+            <span>HTML & CSS</span>
+            <span class='text-yellow-400'>★★★★★</span>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </div>
 </MainLayout>

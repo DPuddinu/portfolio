@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        afacad: ['"AfacadFlux"', ...defaultTheme.fontFamily.sans],
         sans: ['"GeistRegular"', ...defaultTheme.fontFamily.sans],
         mono: ['"GeistMono"', ...defaultTheme.fontFamily.mono]
       },
