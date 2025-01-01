@@ -4,16 +4,20 @@ import Work from '@components/icons/Work.astro';
 import { getCollection } from 'astro:content';
 import MainLayout from '../layouts/MainLayout.astro';
 
-const blogPosts = await getCollection('blog');
+const allBlogPosts = await getCollection('blog');
+const lastBlogPosts = allBlogPosts
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 3);
+const viewMore = allBlogPosts.length > lastBlogPosts.length;
 ---
 
 <MainLayout title='Portfolio'>
-  <div class='grid md:grid-cols-[1fr,auto] gap-24'>
+  <div class='grid md:grid-cols-[1fr,auto] ~gap-4/24'>
     <section>
       <article class='flex flex-col gap-4'>
         <h1 class='~text-4xl/6xl font-bold font-mono max-w-[10em]'>Dario Puddinu</h1>
         <h2 class='~text-2xl/4xl font-bold font-mono text-zinc-200/20'>Senior Frontend Developer</h2>
-        <div class='max-w-[40em] text-lg flex flex-col gap-1 text-neutral-300 text-balance py-4'>
+        <div class='max-w-[40em] text-lg flex flex-col gap-1 text-neutral-300 py-4 text-balance'>
           <p>Hello, I'm Dario, a frontend developer with over 5 years of experience based in Sassari.</p>
           <p>I love creating performant web app using Angular, React, and NextJs.</p>
           <p></p>
@@ -23,9 +27,9 @@ const blogPosts = await getCollection('blog');
         </div>
 
         <div class='my-8'>
-          <ul>
+          <ul class='space-y-4'>
             {
-              blogPosts.map((entry) => (
+              lastBlogPosts.map((entry) => (
                 <li class='grid sm:grid-cols-[auto,1fr] gap-2 sm:gap-4'>
                   <div class='place-content-center sm:h-10'>
                     <time
@@ -45,12 +49,19 @@ const blogPosts = await getCollection('blog');
                 </li>
               ))
             }
+            {
+              viewMore && (
+                <li>
+                  <a href='/blog' class="italic text-slate-400 hover:text-slate-300 transition-colors">View more...</a>
+                </li>
+              )
+            }
           </ul>
         </div>
       </article>
     </section>
     <section class='flex flex-col gap-8'>
-      <section class='sm:max-w-sm pt-4'>
+      <section class='sm:max-w-sm pt-4 space-y-8'>
         <article>
           <h3 class='~text-2xl/4xl font-mono font-semibold tracking-wide flex gap-4 items-end'><Work /> Work</h3>
           <ul class='space-y-2 pt-4'>
@@ -72,19 +83,18 @@ const blogPosts = await getCollection('blog');
               <small class='text-end font-mono'>2019 - 2022</small>
             </li>
           </ul>
-          <div class='flex justify-end pt-8'>
-            <div
-              class='rounded rounded-l-lg hover:bg-zinc-200/20 flex shadow w-fit shadow-zinc-300/20 sm:max-w-xs h-8 text-sm transition-all active:scale-95 duration-300'>
-              <a href='favicon.svg' class='shadow px-4 text-lg place-content-center' download>Download CV</a>
-              <a
-                class='px-2 shadow bg-zinc-300 cursor-pointer rounded-r-lg place-content-center'
-                download
-                aria-label='Download'>
-                <Download />
-              </a>
-            </div>
-          </div>
         </article>
+
+        <div
+          class='rounded w-full rounded-l-lg h-10 bg-zinc-200/20 hover:bg-zinc-200/30 flex shadow shadow-zinc-300/20 sm:max-w-xs text-sm transition-all active:scale-95 duration-300'>
+          <a href='favicon.svg' class='shadow px-4 grow text-lg place-content-center' download>Download CV</a>
+          <a
+            class='px-4 shadow bg-zinc-300 cursor-pointer rounded-r-lg place-content-center'
+            download
+            aria-label='Download'>
+            <Download />
+          </a>
+        </div>
       </section>
     </section>
   </div>

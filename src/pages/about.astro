@@ -1,7 +1,40 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import Skills from '@components/icons/Skills.astro';
 ---
 
 <MainLayout title='About'>
- 
+  <article>
+    <h3 class='~text-2xl/4xl font-mono font-semibold tracking-wide flex gap-4 items-end'><Skills /> Skills</h3>
+    <ul class='space-y-2 pt-4'>
+      <li class='grid grid-cols-2 text-lg text-neutral-300'>
+        <span>Angular</span>
+        <span class='text-yellow-400'>★★★★★</span>
+      </li>
+      <li class='grid grid-cols-2 text-lg text-neutral-300'>
+        <span>React</span>
+        <span class='text-yellow-400'>★★★★☆</span>
+      </li>
+      <li class='grid grid-cols-2 text-lg text-neutral-300'>
+        <span>Next.js</span>
+        <span class='text-yellow-400'>★★★★☆</span>
+      </li>
+      <li class='grid grid-cols-2 text-lg text-neutral-300'>
+        <span>JavaScript</span>
+        <span class='text-yellow-400'>★★★★★</span>
+      </li>
+      <li class='grid grid-cols-2 text-lg text-neutral-300'>
+        <span>TypeScript</span>
+        <span class='text-yellow-400'>★★★★☆</span>
+      </li>
+      <li class='grid grid-cols-2 text-lg text-neutral-300'>
+        <span>HTML & CSS</span>
+        <span class='text-yellow-400'>★★★★★</span>
+      </li>
+      <li class='grid grid-cols-2 text-lg text-neutral-300'>
+        <span>Tailwind CSS</span>
+        <span class='text-yellow-400'>★★★★☆</span>
+      </li>
+    </ul>
+  </article>
 </MainLayout>
