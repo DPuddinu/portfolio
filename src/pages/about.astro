@@ -6,7 +6,7 @@ import Skills from '@components/icons/Skills.astro';
 <MainLayout title='About'>
   <div class='text-neutral-300 font-afacad'>
     <section class='grid md:grid-cols-[1fr_auto] ~gap-8/16'>
-      <article>
+      <article class="[&>p]:max-w-[60em]">
         <header class='~text-4xl/6xl font-bold'>So, who am I?</header>
         <p class='~pt-4/8 ~text-xl/2xl'>
           Hi! I'm Dario, a 32-year-old frontend developer originally from Sardinia, Italy.
@@ -55,7 +55,7 @@ import Skills from '@components/icons/Skills.astro';
         <header class='~text-2xl/4xl font-mono font-semibold tracking-wide flex gap-4 items-end'>
           <Skills /> Skills
         </header>
-        <ul class='space-y-2 pt-4 text-neutral-300 text-lg [&>li]:grid [&>li]:grid-cols-2 [&>li]:gap-4'>
+        <ul class='space-y-2 pt-4 text-neutral-300 text-lg [&>li]:grid [&>li]:grid-cols-2 [&>li]:gap-8'>
           <li>
             <span>Angular</span>
             <span class='text-yellow-400'>★★★★☆</span>
@@ -83,10 +83,10 @@ import Skills from '@components/icons/Skills.astro';
         </ul>
       </article>
     </section>
-    <article class='[&>p]:~pt-4/8'>
+    <article class='[&>p]:~pt-4/8 [&>p]:max-w-[60em]'>
       <header class='~text-4xl/6xl font-bold pt-4'>What Values I bring to the table?</header>
       <p class='~text-xl/2xl'>Scalability, performance and accessibility are my top priorities.</p>
-      <p class='~text-lg/xl'>
+      <p class='~text-lg/xl '>
         A profound passion for my job and a strong belief in the power of collaboration led me to become a better
         developer, clear communication and a strong attention to detail are my strengths.
       </p>

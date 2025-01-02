@@ -3,6 +3,7 @@ import Download from '@components/icons/Download.astro';
 import Work from '@components/icons/Work.astro';
 import { getCollection } from 'astro:content';
 import MainLayout from '../layouts/MainLayout.astro';
+import { formatDate } from '@/utils/formatDate';
 
 const allBlogPosts = await getCollection('blog');
 const lastBlogPosts = allBlogPosts
@@ -21,7 +22,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
         </h2>
         <div class='text-lg flex flex-col gap-1 text-neutral-300 py-4 text-balance'>
           <p>Hello, I'm Dario, a frontend developer with over 5 years of experience based in Sassari.</p>
-          <p class='text-pretty'>I love creating performant web app using Angular, React, and NextJs.</p>
+          <p class='text-pretty'>I love creating performant web apps using Angular, React, and NextJs.</p>
           <p></p>
           <small class='italic leading-5 pt-2'>
             (although this portfolio is built with Astro because is super cool and fast)
@@ -37,11 +38,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
                     <time
                       datetime={entry.data.publishDate.toISOString()}
                       class='font-semibold border-l border-slate-600/80 pl-2 text-slate-400'>
-                      {entry.data.publishDate.toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric'
-                      })}
+                      {formatDate(entry.data.publishDate)}
                     </time>
                   </div>
                   <div>

@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "test": "bun test",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
@@ -21,6 +22,8 @@
     "typescript": "^5.6.2"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/bun": "^1.1.14",
     "fluid-tailwind": "^1.0.4",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-astro-organize-imports": "^0.4.10",

@@ -22,5 +22,5 @@ export default {
     screens,
     fontSize
   },
-  plugins: [fluid, require('tailwindcss-motion')]
+  plugins: [fluid, require('tailwindcss-motion'), require('@tailwindcss/typography')]
 };
