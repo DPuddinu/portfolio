@@ -5,25 +5,27 @@ import Skills from '@components/icons/Skills.astro';
 
 <MainLayout title='About'>
   <div class='text-neutral-300 font-afacad'>
-    <h1 class='~text-4xl/6xl font-bold'>So, who am I?</h1>
     <section class='grid md:grid-cols-[1fr_auto] gap-8'>
       <article>
+        <header class='~text-4xl/6xl font-bold'>So, who am I?</header>
         <p class='~pt-4/8 ~text-xl/2xl'>
           Hi! I'm Dario, a 32-year-old frontend developer originally from Sardinia, Italy.
         </p>
         <br />
-        <p>
+        <p class='~text-lg/xl'>
           My programming journey began in 2013 when I enrolled in Electronic Engineering and Computer Science at the
           University of Pavia.
         </p>
-        <p class='pt-2'>Starting with C and Assembly, I later expanded my expertise to Java and JavaScript.</p>
-        <p class='pt-2'>
+        <p class='pt-2 ~text-lg/xl'>
+          Starting with C and Assembly, I later expanded my expertise to JavaScript.
+        </p>
+        <p class='pt-2 ~text-lg/xl'>
           Throughout my academic journey, I mastered essential software development concepts that I apply daily in my
           work, including SOLID Principles, Design Patterns, and Test-Driven Development.
         </p>
-        <p class='pt-2'>
+        <p class='pt-2 ~text-lg/xl'>
           My professional path has led me to work as a consultant for several notable companies, including:
-          <ul class='list-disc list-inside [&>li]:underline [&>li]:text-lg'>
+          <ul class='list-disc list-inside [&>li]:underline [&>li]:text-base'>
             <li>
               <a href='https://www.alkemy.com/' target='_blank'>Alkemy</a>
             </li>
@@ -42,38 +44,58 @@ import Skills from '@components/icons/Skills.astro';
             <li>
               <a href='https://www.energyteam.it/' target='_blank'>EnergyTeam</a>
             </li>
+            <li>
+              <a href='https://www.metweb.it/metpay.html' target='_blank'>Metweb</a>
+            </li>
           </ul>
+          <span class='pt-2'>And more...</span>
         </p>
       </article>
       <article>
-        <h3 class='~text-2xl/4xl font-mono font-semibold tracking-wide flex gap-4 items-end'><Skills /> Skills</h3>
-        <ul class='space-y-2 pt-4 text-neutral-300 text-lg'>
-          <li class='grid grid-cols-2'>
+        <header class='~text-2xl/4xl font-mono font-semibold tracking-wide flex gap-4 items-end'>
+          <Skills /> Skills
+        </header>
+        <ul class='space-y-2 pt-4 text-neutral-300 text-lg [&>li]:grid [&>li]:grid-cols-2 [&>li]:gap-4'>
+          <li>
             <span>Angular</span>
             <span class='text-yellow-400'>★★★★☆</span>
           </li>
-          <li class='grid grid-cols-2'>
+          <li>
             <span>React</span>
             <span class='text-yellow-400'>★★★★★</span>
           </li>
-          <li class='grid grid-cols-2'>
+          <li>
             <span>Next.js</span>
             <span class='text-yellow-400'>★★★★★</span>
           </li>
-          <li class='grid grid-cols-2'>
+          <li>
             <span>JavaScript</span>
             <span class='text-yellow-400'>★★★★★</span>
           </li>
-          <li class='grid grid-cols-2'>
+          <li>
             <span>TypeScript</span>
             <span class='text-yellow-400'>★★★★☆</span>
           </li>
-          <li class='grid grid-cols-2'>
+          <li>
             <span>HTML & CSS</span>
             <span class='text-yellow-400'>★★★★★</span>
           </li>
         </ul>
       </article>
     </section>
+    <article class='[&>p]:~pt-4/8'>
+      <header class='~text-4xl/6xl font-bold pt-4'>What Values I bring to the table?</header>
+      <p class='~text-xl/2xl'>Scalability, performance and accessibility are my top priorities.</p>
+      <p class='~text-lg/xl'>
+        A profound passion for my job and a strong belief in the power of collaboration led me to become a better
+        developer, clear communication and a strong attention to detail are my strengths.
+      </p>
+      <p class='~text-lg/xl '>
+        During my spare time i like to read, play with my cat Pepe and learn new things.
+        <br />
+        I'm also a photographer and i love to take pictures of the nature and the city i live in, but lately i've been more
+        focused on portraits.
+      </p>
+    </article>
   </div>
 </MainLayout>

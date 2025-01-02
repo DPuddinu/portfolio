@@ -1,6 +1,5 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import collapse from '@styles/collapse.css';
 import Menu from '@components/Menu.astro';
 type Props = {
   title: string;
@@ -11,6 +10,7 @@ const isCurrentPage = (href: string) => {
   return Astro.url.pathname === `/${href}`;
 };
 ---
+
 <html lang='en' class='min-h-dvh'>
   <head>
     <ClientRouter />
@@ -50,26 +50,13 @@ const isCurrentPage = (href: string) => {
         <Menu links={links} />
       </header>
       <main class='py-4'><slot /></main>
-      <footer class='w-full flex justify-center text-zinc-500 py-4 left-0 text-center text-sm'>
-        <div class='flex justify-between w-full max-w-2xl'>
-          <nav class='flex gap-4'>
-            <a
-              class='hover:text-blue-400 transition-colors'
-              href='https://github.com/dpuddinu'
-              target='_blank'
-              rel='noreferrer'>
-              Github
-            </a>
-            <a
-              class='hover:text-blue-400 transition-colors'
-              href='https://www.linkedin.com/in/dario-puddinu-2b1056160/'
-              target='_blank'
-              rel='noreferrer'>
-              Linkedin
-            </a>
-          </nav>
-          <span>Copyright © 2025 Dario Puddinu</span>
-        </div>
+
+      <footer class='w-full text-center rounded justify-center text-zinc-500 py-4 text-sm'>
+        <nav class='space-x-4 [&>a:hover]:text-blue-400 transition-colors'>
+          <a href='https://github.com/dpuddinu' target='_blank' rel='noreferrer'>Github</a>
+          <a href='https://www.linkedin.com/in/dario-puddinu-2b1056160/' target='_blank' rel='noreferrer'>Linkedin</a>
+          <a href='mailto:dpuddinu.dev@gmail.com' rel='noreferrer' title='Send me an email'>Email me</a>
+        </nav>
       </footer>
     </div>
   </body>

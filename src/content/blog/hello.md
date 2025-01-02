@@ -1,9 +1,10 @@
 ---
-title: "Welcome to my blog"
-description: My thoughts on technologies, music, or any other random topic.
-publishDate: 2024-10-05
+title: 'Welcome to my blog'
+description: My thoughts on work, life, or any other random topic.
+publishDate: 2025-01-02
 tags:
-- astro
+  - astro
 ---
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+Welcome visitor!
+

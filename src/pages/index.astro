@@ -15,11 +15,13 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
   <div class='grid md:grid-cols-[1fr,auto] ~gap-4/24'>
     <section>
       <article class='flex flex-col gap-4'>
-        <h1 class='~text-4xl/6xl font-bold font-mono max-w-[10em]'>Dario Puddinu</h1>
-        <h2 class='~text-2xl/4xl font-bold font-mono text-zinc-200/20'>Senior Frontend Developer</h2>
-        <div class='max-w-[40em] text-lg flex flex-col gap-1 text-neutral-300 py-4 text-balance'>
+        <h1 class='~text-4xl/6xl font-bold font-mono'>Dario Puddinu</h1>
+        <h2 class='~text-2xl/4xl w-fit font-bold font-mono text-zinc-200/20 motion-preset-fade'>
+          Senior Frontend Developer
+        </h2>
+        <div class='text-lg flex flex-col gap-1 text-neutral-300 py-4 text-balance'>
           <p>Hello, I'm Dario, a frontend developer with over 5 years of experience based in Sassari.</p>
-          <p>I love creating performant web app using Angular, React, and NextJs.</p>
+          <p class='text-pretty'>I love creating performant web app using Angular, React, and NextJs.</p>
           <p></p>
           <small class='italic leading-5 pt-2'>
             (although this portfolio is built with Astro because is super cool and fast)
@@ -52,7 +54,9 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
             {
               viewMore && (
                 <li>
-                  <a href='/blog' class="italic text-slate-400 hover:text-slate-300 transition-colors">View more...</a>
+                  <a href='/blog' class='italic text-slate-400 hover:text-slate-300 transition-colors'>
+                    View more...
+                  </a>
                 </li>
               )
             }
@@ -86,8 +90,13 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
         </article>
 
         <div
-          class='rounded w-full rounded-l-lg h-10 bg-zinc-200/20 hover:bg-zinc-200/30 flex shadow shadow-zinc-300/20 sm:max-w-xs text-sm transition-all active:scale-95 duration-300'>
-          <a href='favicon.svg' class='shadow px-4 grow text-lg place-content-center' download>Download CV</a>
+          class='rounded w-full rounded-l-lg group h-10 bg-zinc-200/20 hover:bg-zinc-200/30 flex shadow shadow-zinc-300/20 sm:max-w-xs text-sm transition-all active:scale-95 duration-300'>
+          <a
+            href='favicon.svg'
+            class='shadow px-4 grow text-lg place-content-center group-active:motion-preset-confetti'
+            download>
+            Download CV
+          </a>
           <a
             class='px-4 shadow bg-zinc-300 cursor-pointer rounded-r-lg place-content-center'
             download
