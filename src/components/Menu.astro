@@ -1,6 +1,8 @@
 ---
+import type { Link } from '@layouts/MainLayout.astro';
+
 type Props = {
-  links: string[];
+  links: Link[];
 };
 const links = Astro.props.links;
 const isCurrentPage = (href: string) => {
@@ -19,9 +21,12 @@ const isCurrentPage = (href: string) => {
     <path d='M4 6H20M4 12H14M4 18H9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
   </svg>
 </button>
-<div id='mypopover' popover class='m-0 w-full bg-transparent p-4'>
+<div
+  id='mypopover'
+  popover
+  class='m-0 w-full bg-transparent p-4 motion-translate-x-in-100 -motion-translate-y-in-75 motion-duration-300'>
   <div class='flex w-full justify-end'>
-    <div class='w-full bg-zinc-700 rounded-lg p-4 relative'>
+    <div class='w-full bg-zinc-700 rounded-2xl p-4 relative'>
       <button popovertarget='mypopover' class='font-mono text-current ~text-2xl/4xl font-bold absolute right-4'>
         <svg
           width='1rem'
@@ -35,23 +40,14 @@ const isCurrentPage = (href: string) => {
         </svg>
       </button>
       <ul class='flex flex-col text-zinc-200 gap-4 py-2'>
-        <li class='py-1'>
-          <a
-            data-astro-prefetch
-            href="/"
-            class='hover:text-primary font-semibold transition-colors p-1 duration-300 capitalize'>
-            Home
-          </a>
-          <div class='border-b-[0.5px] border-zinc-600 w-full pt-1'></div>
-        </li>
         {
           links.map((link) => (
             <li class='py-1'>
               <a
                 data-astro-prefetch
-                href={isCurrentPage(link) ? '#' : link.toLowerCase()}
+                href={isCurrentPage(link.href) ? '#' : link.href}
                 class='hover:text-primary font-semibold transition-colors p-1 duration-300 capitalize'>
-                {link}
+                {link.label}
               </a>
               <div class='border-b-[0.5px] border-zinc-600 w-full pt-1' />
             </li>
@@ -68,3 +64,29 @@ const isCurrentPage = (href: string) => {
     </div>
   </div>
 </div>
+
+<style>
+  :root {
+    --popover-animation-duration: 0.3s;
+  }
+  [popover]:popover-open {
+    opacity: 1;
+  }
+  [popover] {
+    /* Final state of the exit animation */ 
+    opacity: 0;
+    transition:
+      opacity var(--popover-animation-duration) ease-in-out,
+      overlay var(--popover-animation-duration) allow-discrete,
+      display var(--popover-animation-duration) allow-discrete;
+  }
+  @starting-style {
+    [popover]:popover-open {
+      opacity: 0;
+    }
+  }
+
+  [popover]::backdrop {
+    backdrop-filter: blur(2px);
+  }
+</style>

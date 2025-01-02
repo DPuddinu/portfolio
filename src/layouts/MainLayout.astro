@@ -4,10 +4,36 @@ import Menu from '@components/Menu.astro';
 type Props = {
   title: string;
 };
+export type Link = {
+  href: string;
+  label: string;
+  title: string;
+};
 const { title } = Astro.props;
-const links = ['about', 'blog', 'Til'];
+const links: Link[] = [
+  {
+    href: '/',
+    label: 'Home',
+    title: 'Home'
+  },
+  {
+    href: '/about',
+    label: 'About',
+    title: 'About me'
+  },
+  {
+    href: '/blog',
+    label: 'Blog',
+    title: 'My blog'
+  },
+  {
+    href: '/til',
+    label: 'TIL',
+    title: 'Today I Learnt'
+  }
+];
 const isCurrentPage = (href: string) => {
-  return Astro.url.pathname === `/${href}`;
+  return Astro.url.pathname === href;
 };
 ---
 
@@ -26,23 +52,21 @@ const isCurrentPage = (href: string) => {
     <title>{title}</title>
   </head>
   <body class='min-h-dvh bg-zinc-800 text-zinc-200 flex'>
-    <div class=' mx-auto w-full ~max-w-[40rem/96rem] ~px-6/12 py-8  space-y-8 grid grid-rows-[auto_1fr_auto]'>
+    <div class='mx-auto w-full ~max-w-[40rem/96rem] ~px-6/12 py-8 space-y-8 grid grid-rows-[auto_1fr_auto]'>
       <header class='w-full flex md:gap-16 md:justify-center items-center relative'>
         <nav
           class='hidden md:flex justify-center gap-8 rounded-full font-semibold w-min px-8 py-2 shadow-zinc-200/20 shadow-[12px_12px_12px_-12px_-12px_-12px]'>
-          <a
-            data-astro-prefetch
-            href='/'
-            class='hover:text-primary transition-colors p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'>
-            Home
-          </a>
           {
             links.map((link) => (
               <a
                 data-astro-prefetch
-                href={isCurrentPage(link) ? '#' : link.toLowerCase()}
-                class='hover:text-primary transition-colors tracking-wider p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'>
-                {link}
+                title={link.title}
+                href={isCurrentPage(link.href) ? '#' : link.href}
+                class:list={[
+                  'hover:text-primary transition-colors tracking-wider p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize',
+                  isCurrentPage(link.href) ? 'text-primary' : ''
+                ]}>
+                {link.label}
               </a>
             ))
           }
@@ -88,28 +112,3 @@ const isCurrentPage = (href: string) => {
   }
 </style>
 
-<style>
-  :root {
-    --popover-animation-duration: 0.3s;
-  }
-  [popover]:popover-open {
-    opacity: 1;
-  }
-  [popover] {
-    /* Final state of the exit animation */
-    opacity: 0;
-    transition:
-      opacity var(--popover-animation-duration) ease-in-out,
-      overlay var(--popover-animation-duration) allow-discrete,
-      display var(--popover-animation-duration) allow-discrete;
-  }
-  @starting-style {
-    [popover]:popover-open {
-      opacity: 0;
-    }
-  }
-
-  [popover]::backdrop {
-    backdrop-filter: blur(2px);
-  }
-</style>
