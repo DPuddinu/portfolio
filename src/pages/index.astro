@@ -42,7 +42,9 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
                     </time>
                   </div>
                   <div>
-                    <p class='text-2xl place-content-center font-semibold sm:min-h-10'>{entry.data.title}</p>
+                    <a href={`/blog/${entry.id}`} class='text-2xl place-content-center text-zinc-200/30 font-semibold sm:min-h-10'>
+                      {entry.data.title}
+                    </a>
                     <p class=''>{entry.data.description}</p>
                   </div>
                 </li>
