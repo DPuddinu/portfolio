@@ -3,12 +3,12 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
-
 import compressor from 'astro-compressor';
+import robotsTxt from 'astro-robots-txt';
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), compress(), sitemap(), compressor()],
+  site: 'https://dpuddinu.vercel.app/',
+  integrations: [tailwind(), compress(), sitemap(), compressor(), robotsTxt()],
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport'
