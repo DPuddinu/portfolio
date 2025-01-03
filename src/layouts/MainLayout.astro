@@ -102,10 +102,8 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
                 data-astro-prefetch
                 title={link.title}
                 href={isCurrent(link.href) ? '#' : link.href}
-                class:list={[
-                  'hover:text-primary transition-colors tracking-wider p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize',
-                  isCurrent(link.href) ? 'text-primary' : ''
-                ]}>
+                class='hover:text-primary transition-colors tracking-wider p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'
+                class:list={[ isCurrent(link.href) ? 'text-primary' : '']}>
                 {link.label}
               </a>
             ))

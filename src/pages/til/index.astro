@@ -20,18 +20,20 @@ const groupedPosts = allBlogPosts.reduce((acc, entry) => {
   <p class='text-lg text-neutral-300 py-4 text-balance'>
     Inspired by Stefan Judis, these are the little facts I learnt in my daily life as a Frontend Engineer.
   </p>
-  {
-    Object.entries(groupedPosts).map(([subject, entries]) => (
-      <div class='py-8'>
-        <h2 class='~text-xl/3xl font-semibold pb-4 text-neutral-400'>{subject}</h2>
-        <ul>
-          {entries.map((entry) => (
-            <li class=' gap-2 sm:gap-4 motion-preset-fade '>
-              <a href={`/til/${entry.id}`}>{entry.data.title}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))
-  }
+  <div class="grid grid-cols-2 xl:grid-cols-3 gap-4">
+    {
+      Object.entries(groupedPosts).map(([subject, entries]) => (
+        <div class='py-8'>
+          <h2 class='~text-xl/3xl font-semibold pb-4 text-neutral-400'>{subject}</h2>
+          <ul>
+            {entries.map((entry) => (
+              <li class=' gap-2 sm:gap-4 motion-preset-fade hover:text-blue-400'>
+                <a href={`/til/${entry.id}`}>{entry.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
 </MainLayout>

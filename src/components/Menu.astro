@@ -11,7 +11,11 @@ const isHome = Astro.url.pathname === '/';
 
 <div class='md:hidden flex justify-end w-full'>
   <div class='gap-2 flex justify-between items-center w-full'>
-    <a href={isHome ? '#' : '/'} class='font-bold bg-zinc-700 tracking-wide rounded-full size-10 text-center place-content-center active:bg-zinc-600 transition-colors'>DP</a>
+    <a
+      href={isHome ? '#' : '/'}
+      class='font-bold bg-zinc-700 tracking-wide rounded-full size-10 text-center place-content-center active:bg-zinc-600 transition-colors'>
+      DP
+    </a>
     <button popovertarget='mypopover' aria-label='Open menu' aria-expanded='false' aria-controls='mypopover'>
       <svg
         width='1.5rem'
@@ -57,7 +61,8 @@ const isHome = Astro.url.pathname === '/';
                   <a
                     data-astro-prefetch
                     href={isCurrent(link.href) ? '#' : link.href}
-                    class='hover:text-primary font-semibold transition-colors p-1 duration-300 capitalize'
+                    class='hover:text-primary transition-colors tracking-wider p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'
+                    class:list={[isCurrent(link.href) ? 'text-primary' : '']}
                     role='menuitem'
                     aria-current={isCurrent(link.href) ? 'page' : undefined}>
                     {link.label}
