@@ -1,13 +1,11 @@
 ---
 import type { Link } from '@layouts/MainLayout.astro';
-
+import { isCurrentPage } from '@/utils/isCurrentPage';
 type Props = {
   links: Link[];
 };
 const links = Astro.props.links;
-const isCurrentPage = (href: string) => {
-  return Astro.url.pathname === `/${href}`;
-};
+const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
 ---
 
 <button popovertarget='mypopover' class='md:hidden fixed top-8 right-4'>
@@ -45,7 +43,7 @@ const isCurrentPage = (href: string) => {
             <li class='py-1'>
               <a
                 data-astro-prefetch
-                href={isCurrentPage(link.href) ? '#' : link.href}
+                href={isCurrent(link.href) ? '#' : link.href}
                 class='hover:text-primary font-semibold transition-colors p-1 duration-300 capitalize'>
                 {link.label}
               </a>
@@ -66,7 +64,7 @@ const isCurrentPage = (href: string) => {
     opacity: 1;
   }
   [popover] {
-    /* Final state of the exit animation */ 
+    /* Final state of the exit animation */
     opacity: 0;
     transition:
       opacity var(--popover-animation-duration) ease-in-out,

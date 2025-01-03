@@ -21,7 +21,7 @@ Last year was a rollercoaster. I moved to a new city, bought a house, traveled, 
 
 Through countless hours of learning from blogs and expert videos, I established myself as the frontend technical authority in my office.
 <br>
-My practical approach to learning - building side projects to test new concepts - proved invaluable (perhaps it's time to take the next step with a monorepo?) and i saved a lot of time.
+My practical approach to learning - building side projects to test new concepts - proved invaluable (perhaps it's time to take the next step with a monorepo?) and saved me a lot of time because i was able to recycle components i already used, custom Hooks and more.
 
 ### Leadership & Teaching
 

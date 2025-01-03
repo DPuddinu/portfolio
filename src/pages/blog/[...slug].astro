@@ -16,7 +16,11 @@ const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<MainLayout title={post.data.title}>
+<MainLayout
+  title={`${post.data.title} | Dario Puddinu`}
+  description={post.data.description}
+  type='article'
+  image={post.data.image}>
   <main class='w-fit'>
     <Prose>
       <Content />

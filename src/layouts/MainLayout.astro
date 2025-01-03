@@ -1,15 +1,29 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import { SEO } from 'astro-seo';
+import { isCurrentPage } from '@/utils/isCurrentPage';
 import Menu from '@components/Menu.astro';
+
 type Props = {
   title: string;
+  description?: string;
+  image?: string;
+  type?: string;
 };
+
+const {
+  title,
+  description = 'Senior Frontend Developer with over 5 years of experience, specializing in Angular, React, and NextJS',
+  image = '/og-image.png',
+  type = 'website'
+} = Astro.props;
+
 export type Link = {
   href: string;
   label: string;
   title: string;
 };
-const { title } = Astro.props;
+
 const links: Link[] = [
   {
     href: '/',
@@ -32,24 +46,50 @@ const links: Link[] = [
     title: 'Today I Learnt'
   }
 ];
-const isCurrentPage = (href: string) => {
-  return Astro.url.pathname === href;
-};
+
+const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
 ---
 
 <html lang='en' class='min-h-dvh'>
   <head>
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title,
+          type,
+          image
+        },
+        optional: {
+          description,
+          siteName: 'Dario Puddinu'
+        }
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        site: '@your_twitter',
+        creator: '@your_twitter',
+        title,
+        description,
+        image
+      }}
+      extend={{
+        meta: [
+          { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
+          { name: 'generator', content: Astro.generator }
+        ],
+        link: [
+          { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any' },
+          { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+          { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+          { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+          { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/android-chrome-192x192.png' },
+          { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/android-chrome-512x512.png' }
+        ]
+      }}
+    />
     <ClientRouter />
-    <meta charset='utf-8' />
-    <link rel='icon' type='image/x-icon' href='/favicon.ico' sizes='any' />
-    <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
-    <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
-    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-    <link rel='icon' type='image/png' sizes='192x192' href='/android-chrome-192x192.png' />
-    <link rel='icon' type='image/png' sizes='512x512' href='/android-chrome-512x512.png' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <meta name='generator' content={Astro.generator} />
-    <title>{title}</title>
   </head>
   <body class='min-h-dvh bg-zinc-800 text-zinc-200 flex'>
     <div class='mx-auto w-full ~max-w-[40rem/96rem] ~px-6/12 py-8 space-y-8 grid grid-rows-[auto_1fr_auto]'>
@@ -61,10 +101,10 @@ const isCurrentPage = (href: string) => {
               <a
                 data-astro-prefetch
                 title={link.title}
-                href={isCurrentPage(link.href) ? '#' : link.href}
+                href={isCurrent(link.href) ? '#' : link.href}
                 class:list={[
                   'hover:text-primary transition-colors tracking-wider p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize',
-                  isCurrentPage(link.href) ? 'text-primary' : ''
+                  isCurrent(link.href) ? 'text-primary' : ''
                 ]}>
                 {link.label}
               </a>
@@ -73,7 +113,7 @@ const isCurrentPage = (href: string) => {
         </nav>
         <Menu links={links} />
       </header>
-      <main class='py-4'><slot /></main>
+      <main class='py-4 ~px-4/64'><slot /></main>
 
       <footer class='w-full text-center rounded justify-center text-zinc-500 py-4 text-sm'>
         <nav class='space-x-4 [&>a:hover]:text-blue-400 transition-colors'>
@@ -111,4 +151,3 @@ const isCurrentPage = (href: string) => {
     display: none;
   }
 </style>
-
