@@ -1,6 +1,6 @@
 ---
 title: 'Automatic Query Invalidation'
-subject: 'Tanstack Query'
+subject: 'React'
 description: Automatically invalidate query after a mutation via QueryClient config.
 publishDate: 2025-01-02
 tags:
