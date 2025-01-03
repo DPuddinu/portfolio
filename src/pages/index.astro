@@ -17,7 +17,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
     <section>
       <article class='flex flex-col gap-4'>
         <h1 class='~text-4xl/6xl font-bold font-mono'>Dario Puddinu</h1>
-        <h2 class='~text-2xl/4xl w-fit font-bold font-mono text-zinc-200/50 motion-preset-fade'>
+        <h2 class='~text-2xl/4xl w-fit font-bold font-mono text-zinc-200/70 motion-preset-fade'>
           Senior Frontend Developer
         </h2>
         <div class='text-lg flex flex-col gap-1 text-neutral-300 py-4 text-balance'>
@@ -44,7 +44,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
                   <div>
                     <a
                       href={`/blog/${entry.id}`}
-                      class='text-2xl place-content-center text-zinc-200/50 font-semibold sm:min-h-10'>
+                      class='text-2xl place-content-center text-zinc-200/70 font-semibold sm:min-h-10'>
                       {entry.data.title}
                     </a>
                     <p class=''>{entry.data.description}</p>
@@ -72,7 +72,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
           <ul class='space-y-2 pt-4'>
             <li class='grid grid-cols-2'>
               <div>
-                <a href='https://abinsula.com' target='_blank' rel='noreferrer'>Abinsula</a><p class='text-zinc-200/50'>
+                <a href='https://abinsula.com' target='_blank' rel='noreferrer'>Abinsula</a><p class='text-zinc-200/70'>
                   Frontend Developer
                 </p>
               </div>
@@ -81,7 +81,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
             <li class='grid grid-cols-2'>
               <div>
                 <a href='https://www.energyteam.it/' target='_blank' rel='noreferrer'>Energy Team</a><p
-                  class='text-zinc-200/50'>
+                  class='text-zinc-200/70'>
                   Fullstack Developer
                 </p>
               </div>
@@ -90,17 +90,18 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
           </ul>
         </article>
 
-        <div
-          class='rounded w-full rounded-l-lg group h-10 bg-zinc-200/20 hover:bg-zinc-200/30 flex shadow shadow-zinc-300/20 sm:max-w-xs text-sm transition-all active:scale-95 duration-300'>
+        <div class='w-full group h-10 flex sm:max-w-xs text-sm active:scale-95'>
           <a
             href='/path/to/your-cv.pdf'
-            class='shadow px-4 grow text-lg place-content-center group-active:motion-preset-confetti'
+            class='px-4 grow text-lg place-content-center hover:bg-zinc-200/30 bg-zinc-200/20 rounded-l-lg transition-all group-active:motion-preset-confetti'
+            aria-label='Download CV'
             download>
             Download CV
           </a>
           <a
             href='/path/to/your-cv.pdf'
-            class='px-4 shadow bg-zinc-300 cursor-pointer rounded-r-lg place-content-center'
+            class='px-4 bg-zinc-300 cursor-pointer rounded-r-lg place-content-center'
+            aria-label='Download CV'
             download>
             <Download />
           </a>

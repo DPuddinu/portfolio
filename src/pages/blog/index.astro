@@ -20,12 +20,12 @@ const allBlogPosts = await getCollection('blog');
 
           <div class='space-y-4'>
             <h2 class='font-bold ~text-xl/3xl'>{entry.data.title}</h2>
-            <p class='~text-base/lg text-zinc-200/50'>{entry.data.description}</p>
+            <p class='~text-base/lg text-zinc-200/70'>{entry.data.description}</p>
           </div>
 
           <dl class='mt-6 flex gap-4 sm:gap-6'>
             <dl class='flex flex-col-reverse'>
-              <dd class='~text-xs/sm text-zinc-200/50'>{formatDate(entry.data.publishDate)}</dd>
+              <dd class='~text-xs/sm text-zinc-200/70'>{formatDate(entry.data.publishDate)}</dd>
             </dl>
           </dl>
         </a>
