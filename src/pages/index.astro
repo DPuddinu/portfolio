@@ -17,7 +17,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
     <section>
       <article class='flex flex-col gap-4'>
         <h1 class='~text-4xl/6xl font-bold font-mono'>Dario Puddinu</h1>
-        <h2 class='~text-2xl/4xl w-fit font-bold font-mono text-zinc-200/20 motion-preset-fade'>
+        <h2 class='~text-2xl/4xl w-fit font-bold font-mono text-zinc-200/50 motion-preset-fade'>
           Senior Frontend Developer
         </h2>
         <div class='text-lg flex flex-col gap-1 text-neutral-300 py-4 text-balance'>
@@ -42,7 +42,9 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
                     </time>
                   </div>
                   <div>
-                    <a href={`/blog/${entry.id}`} class='text-2xl place-content-center text-zinc-200/30 font-semibold sm:min-h-10'>
+                    <a
+                      href={`/blog/${entry.id}`}
+                      class='text-2xl place-content-center text-zinc-200/50 font-semibold sm:min-h-10'>
                       {entry.data.title}
                     </a>
                     <p class=''>{entry.data.description}</p>
@@ -70,7 +72,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
           <ul class='space-y-2 pt-4'>
             <li class='grid grid-cols-2'>
               <div>
-                <a href='https://abinsula.com' target='_blank' rel='noreferrer'>Abinsula</a><p class='text-zinc-200/20'>
+                <a href='https://abinsula.com' target='_blank' rel='noreferrer'>Abinsula</a><p class='text-zinc-200/50'>
                   Frontend Developer
                 </p>
               </div>
@@ -79,7 +81,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
             <li class='grid grid-cols-2'>
               <div>
                 <a href='https://www.energyteam.it/' target='_blank' rel='noreferrer'>Energy Team</a><p
-                  class='text-zinc-200/20'>
+                  class='text-zinc-200/50'>
                   Fullstack Developer
                 </p>
               </div>
@@ -91,15 +93,15 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
         <div
           class='rounded w-full rounded-l-lg group h-10 bg-zinc-200/20 hover:bg-zinc-200/30 flex shadow shadow-zinc-300/20 sm:max-w-xs text-sm transition-all active:scale-95 duration-300'>
           <a
-            href='favicon.svg'
+            href='/path/to/your-cv.pdf'
             class='shadow px-4 grow text-lg place-content-center group-active:motion-preset-confetti'
             download>
             Download CV
           </a>
           <a
+            href='/path/to/your-cv.pdf'
             class='px-4 shadow bg-zinc-300 cursor-pointer rounded-r-lg place-content-center'
-            download
-            aria-label='Download'>
+            download>
             <Download />
           </a>
         </div>
