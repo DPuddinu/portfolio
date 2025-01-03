@@ -113,7 +113,7 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
         </nav>
         <Menu links={links} />
       </header>
-      <main class='py-4 ~px-4/64'><slot /></main>
+      <main class='py-4 ~px-4/64 overflow-auto'><slot /></main>
 
       <footer class='w-full text-center rounded justify-center text-zinc-200/70 py-4 text-sm'>
         <nav class='space-x-4 [&>a:hover]:text-blue-400 transition-colors'>
