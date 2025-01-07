@@ -53,7 +53,7 @@ Turn doom scrolling into productive learning:
 - Watch technical shorts on YouTube
 - Save interesting concepts for deeper study later
 
-### **7. Embrace AI Tools**
+### **Embrace AI Tools**
 
 Effectively using tools like ChatGPT, Cursor, or GitHub Copilot is crucial for modern development. Learn to leverage them for:
 

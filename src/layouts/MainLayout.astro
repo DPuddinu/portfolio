@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import { SEO } from 'astro-seo';
 import { isCurrentPage } from '@/utils/isCurrentPage';
 import Menu from '@components/Menu.astro';
@@ -89,7 +88,6 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
         ]
       }}
     />
-    <ClientRouter />
   </head>
   <body class='min-h-dvh bg-zinc-900/95 text-zinc-200 flex'>
     <div class='mx-auto w-full ~max-w-[40rem/96rem] ~px-6/12 py-8 space-y-8 grid grid-rows-[auto_1fr_auto]'>
@@ -103,7 +101,7 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
                 title={link.title}
                 href={isCurrent(link.href) ? '#' : link.href}
                 class='hover:text-primary transition-colors tracking-wider p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'
-                class:list={[ isCurrent(link.href) ? 'text-primary' : '']}>
+                class:list={[isCurrent(link.href) ? 'text-primary' : '']}>
                 {link.label}
               </a>
             ))
@@ -145,7 +143,9 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
     font-style: normal;
     font-display: swap;
   }
-  details summary::-webkit-details-marker {
-    display: none;
+</style>
+<style>
+  @view-transition {
+    navigation: auto; /* enabled! */
   }
 </style>

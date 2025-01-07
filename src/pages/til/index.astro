@@ -5,27 +5,32 @@ import { getCollection } from 'astro:content';
 const allBlogPosts = await getCollection('til');
 
 // Group blog posts by subject
-const groupedPosts = allBlogPosts.reduce((acc, entry) => {
-  const subject = entry.data.subject;
-  if (!acc[subject]) {
-    acc[subject as keyof typeof acc] = [];
-  }
-  acc[subject as keyof typeof acc].push(entry);
-  return acc;
-}, {} as Record<string, typeof allBlogPosts[number][]>);
+const groupedPosts = allBlogPosts.reduce(
+  (acc, entry) => {
+    const subject = entry.data.subject;
+    if (!acc[subject]) {
+      acc[subject as keyof typeof acc] = [];
+    }
+    acc[subject as keyof typeof acc].push(entry);
+    return acc;
+  },
+  {} as Record<string, (typeof allBlogPosts)[number][]>
+);
 ---
 
-<MainLayout title='Today I Learnt'>
-  <h1 class='~text-4xl/6xl font-bold font-mono'>Today I Learnt</h1>
+<MainLayout
+  title='Today I Learnt'
+  description='Today I Learnt is a collection of code snippets I use in my daily work. Written by Dario Puddinu'>
+  <h1 class='~text-4xl/6xl font-bold font-mono' transition:name='h1'>Today I Learnt</h1>
   <p class='text-lg text-neutral-300 py-4 text-balance'>
     Inspired by Stefan Judis, these are the little facts I learnt in my daily life as a Frontend Engineer.
   </p>
-  <div class="grid grid-cols-2 xl:grid-cols-3 gap-4">
+  <div class='grid grid-cols-2 xl:grid-cols-3 gap-4'>
     {
       Object.entries(groupedPosts).map(([subject, entries]) => (
         <div class='py-8'>
-          <h2 class='~text-xl/3xl font-semibold pb-4 text-neutral-400'>{subject}</h2>
-          <ul>
+          <h2 class='~text-xl/3xl font-semibold pb-4 text-blue-400'>{subject}</h2>
+          <ul class='list-decimal list-inside'>
             {entries.map((entry) => (
               <li class=' gap-2 sm:gap-4 motion-preset-fade hover:text-blue-400'>
                 <a href={`/til/${entry.id}`}>{entry.data.title}</a>

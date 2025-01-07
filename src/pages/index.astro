@@ -16,7 +16,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
   <div class='grid md:grid-cols-[1fr,auto] ~gap-4/24'>
     <section>
       <article class='flex flex-col gap-4'>
-        <h1 class='~text-4xl/6xl font-bold font-mono'>Dario Puddinu</h1>
+        <h1 class='~text-4xl/6xl font-bold font-mono' transition:name='h1'>Dario Puddinu</h1>
         <h2 class='~text-2xl/4xl w-fit font-bold font-mono text-zinc-200/70 motion-preset-fade'>
           Senior Frontend Developer
         </h2>
@@ -44,7 +44,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
                   <div>
                     <a
                       href={`/blog/${entry.id}`}
-                      class='text-2xl place-content-center text-zinc-200/70 font-semibold sm:min-h-10'>
+                      class='text-2xl place-content-center text-blue-200/80 font-semibold sm:min-h-10'>
                       {entry.data.title}
                     </a>
                     <p class=''>{entry.data.description}</p>
