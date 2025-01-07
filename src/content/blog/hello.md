@@ -6,7 +6,7 @@ tags:
   - astro
 ---
 
-## **2024 - RECAP**
+# **2024 - RECAP**
 
 ### A Year of Growth
 
@@ -23,7 +23,7 @@ Through countless hours of learning from blogs and expert videos, I established 
 <br>
 My practical approach to learning - building side projects to test new concepts - proved invaluable (perhaps it's time to take the next step with a monorepo?) and saved me a lot of time because i was able to recycle components i already used, custom Hooks and more.
 
-### Leadership & Teaching
+### **Leadership & Teaching**
 
 A significant milestone was leading a development team, for the first time I was entrusted with making crucial product decisions. The experience extended to mentoring three junior developers, teaching them:
 
@@ -32,6 +32,6 @@ A significant milestone was leading a development team, for the first time I was
 - React
 - Git & GitHub workflows
 
-### Creative Discovery
+### **Creative Discovery**
 
 Beyond coding, I discovered my photographic passion: portrait photography.

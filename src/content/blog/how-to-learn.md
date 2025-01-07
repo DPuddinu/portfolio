@@ -6,11 +6,11 @@ tags:
   - learning
 ---
 
-## How to Learn Frontend Development Fast in 2025
+# **How to Learn Frontend Development Fast in 2025**
 
 The frontend world moves incredibly fast. With new frameworks, state managers, and patterns emerging daily, developers need effective strategies to stay competitive. Here's what has worked best for me over the years.
 
-### 1. Learn by Doing
+### **Learn by Doing**
 
 **Note:** This approach is recommended for developers with some experience, not complete beginners.
 
@@ -20,15 +20,15 @@ The most effective way to learn is through hands-on experience. Choose a project
 - It mirrors real-world scenarios
 - It develops crucial problem-solving skills
 
-### 2. Learn Once, Apply Everywhere
+### **Learn Once, Apply Everywhere**
 
 Core concepts like SOLID principles and design patterns are universal. Modern frameworks share similar features and often borrow from each other. Focus on understanding fundamental concepts rather than framework-specific implementations.
 
-### 3. Master One Framework
+### **Master One Framework**
 
 Whether it's React, Vue, Svelte, or Angular, focus on mastering one framework deeply. Depth over breadth leads to better expertise, understanding and salary.
 
-### 4. Stay Organized
+### **Stay Organized**
 
 Create a structured system to track your learning:
 
@@ -36,7 +36,7 @@ Create a structured system to track your learning:
 - Keep a well-organized code repository
 - Document your learning journey
 
-### 5. Dedicated Learning Environment
+### **Dedicated Learning Environment**
 
 Create a dedicated account (Google or similar) for development resources:
 
@@ -45,7 +45,7 @@ Create a dedicated account (Google or similar) for development resources:
 - Development tools
 - Learning resources
 
-### 6. Leverage Micro-Learning
+### **Leverage Micro-Learning**
 
 Turn doom scrolling into productive learning:
 
@@ -53,7 +53,7 @@ Turn doom scrolling into productive learning:
 - Watch technical shorts on YouTube
 - Save interesting concepts for deeper study later
 
-### 7. Embrace AI Tools
+### **7. Embrace AI Tools**
 
 Effectively using tools like ChatGPT, Cursor, or GitHub Copilot is crucial for modern development. Learn to leverage them for:
 

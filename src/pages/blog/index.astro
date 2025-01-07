@@ -15,17 +15,17 @@ const allBlogPosts = await getCollection('blog');
       allBlogPosts.map((entry) => (
         <a
           href={`/blog/${entry.id}`}
-          class='relative hover:bg-zinc-700 block shadow transition-all shadow-zinc-700/20 hover:shadow-zinc-700/50 overflow-hidden rounded-lg border border-neutral-700 ~p-4/8 '>
+          class='relative group hover:bg-zinc-700 grid shadow transition-all shadow-zinc-700/20 hover:shadow-zinc-700/50 overflow-hidden rounded-lg border border-neutral-700 ~p-4/8'>
           <span class='absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600' />
 
           <div class='space-y-4'>
             <h2 class='font-bold ~text-xl/3xl'>{entry.data.title}</h2>
-            <p class='~text-base/lg text-zinc-200/70'>{entry.data.description}</p>
+            <p class='~text-base/lg text-zinc-200/70 group-hover:text-zinc-100 transition-colors'>{entry.data.description}</p>
           </div>
 
           <dl class='mt-6 flex gap-4 sm:gap-6'>
             <dl class='flex flex-col-reverse'>
-              <dd class='~text-xs/sm text-zinc-200/70'>{formatDate(entry.data.publishDate)}</dd>
+              <dd class='~text-xs/sm text-blue-200/70 group-hover:text-blue-100 transition-colors'>{formatDate(entry.data.publishDate)}</dd>
             </dl>
           </dl>
         </a>
