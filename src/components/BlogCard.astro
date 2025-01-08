@@ -21,8 +21,8 @@ const { entry } = Astro.props;
   class='relative group hover:bg-blue-600/50 grid-flow-row hover:border-blue-600 gap-4 grid grid-rows-[auto,1fr,auto] shadow transition-all shadow-zinc-700/20 hover:shadow-zinc-700/50 overflow-hidden rounded-lg border border-neutral-700 ~p-4/8 ~pb-6/8'>
   <span class='absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'></span>
   <div>
-    <h2 class='font-bold ~text-xl/3xl'>
-      <a href={`/blog/${entry.data.slug}`}>{entry.data.title}</a>
+    <h2 class='font-bold ~text-xl/3xl w-fit'>
+      <a href={`/blog/${entry.data.slug}`} class='transition-colors hover:text-white'>{entry.data.title}</a>
     </h2>
   </div>
   <div class='flex flex-col justify-center'>
