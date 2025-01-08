@@ -1,4 +1,12 @@
+---
+type Props = {
+  class?: string;
+};
+const { class: className } = Astro.props;
+---
+
 <div
+  class:list={[className]}
   class={`space-y-4
   prose-h1:~text-4xl/6xl
   prose-h2:~text-3xl/4xl

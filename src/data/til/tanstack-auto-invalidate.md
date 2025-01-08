@@ -9,7 +9,7 @@ tags:
   - tanstack
 ---
 
-## Overview
+# **Overview**
 
 This document explains how to automatically invalidate queries after a mutation using the Tanstack Query library.
 

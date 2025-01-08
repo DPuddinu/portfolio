@@ -15,7 +15,9 @@ const years = Array.from(new Set(allBlogPosts.map((post) => post.data.publishDat
     <h1 class='~text-4xl/6xl font-bold font-mono' transition:name='h1'>Blog</h1>
     <BlogFilters years={years} />
   </div>
-  <div class='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+  <div
+    class='grid grid-cols-1 gap-4'
+    class:list={[{ 'md:grid-cols-2': years.length >= 2 }, { 'lg:grid-cols-3': years.length >= 3 }]}>
     {allBlogPosts.map((entry) => <BlogCard entry={entry} />)}
   </div>
 </MainLayout>

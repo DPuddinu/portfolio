@@ -17,5 +17,5 @@ const { Content } = await render(post);
 ---
 
 <MainLayout title={post.data.title} description={post.data.description} type='article' image={post.data.image}>
-  <Prose><Content /></Prose>
+  <Prose class='[&>h1]:text-blue-200/80'> <Content /></Prose>
 </MainLayout>

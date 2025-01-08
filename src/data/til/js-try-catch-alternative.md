@@ -9,7 +9,7 @@ tags:
   - javascript
 ---
 
-## Overview
+# **Overview**
 
 This document explains how to avoid try/catch in Typescript using a wrapper function that returns a tuple with the error and the data of type T.
 
