@@ -7,7 +7,7 @@ import compressor from 'astro-compressor';
 import robotsTxt from 'astro-robots-txt';
 
 export default defineConfig({
-  site: 'https://dpuddinu.vercel.app/',
+  site: 'https://dpuddinu.vercel.app',
   integrations: [tailwind(), compress(), sitemap(), compressor(), robotsTxt()],
   prefetch: {
     prefetchAll: true,
