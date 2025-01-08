@@ -33,7 +33,7 @@ const groupedPosts = allBlogPosts.reduce(
           <ul class='list-decimal list-inside'>
             {entries.map((entry) => (
               <li class=' gap-2 sm:gap-4 motion-preset-fade hover:text-blue-400'>
-                <a href={`/til/${entry.id}`}>{entry.data.title}</a>
+                <a href={`/til/${entry.data.slug}`}>{entry.data.title}</a>
               </li>
             ))}
           </ul>

@@ -1,5 +1,6 @@
 ---
 title: 'Try/Catch Alternative'
+slug: try-catch-alternative
 subject: 'Typescript'
 description: How to avoid try/catch in Javascript using a wrapper function.
 publishDate: 2025-01-03

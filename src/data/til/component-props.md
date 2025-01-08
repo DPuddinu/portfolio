@@ -1,5 +1,6 @@
 ---
 title: 'Component Props Type'
+slug: component-props
 subject: 'React'
 description: Very useful types for creating reusable React components.
 publishDate: 2025-01-03
