@@ -9,7 +9,7 @@ tags:
   - react
 ---
 
-# **Overview**
+# **Component Props Type**
 
 This component accepts all the props of the input component.
 

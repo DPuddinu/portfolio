@@ -6,7 +6,7 @@ const { class: className } = Astro.props;
 ---
 
 <div
-  class:list={[className]}
+    class:list={[className]}
   class={`space-y-4
   prose-h1:~text-4xl/6xl
   prose-h2:~text-3xl/4xl
@@ -23,6 +23,9 @@ const { class: className } = Astro.props;
   prose-b:font-bold
   prose-pre:rounded-lg
   prose-pre:p-4
+  prose-a:text-blue-400
+  prose-a:underline
+  prose-a:underline-offset-4
   overflow-auto
   font-afacad
   scroll-bar

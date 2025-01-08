@@ -9,7 +9,7 @@ tags:
   - javascript
 ---
 
-# **Overview**
+# **Try/Catch Alternative**
 
 This document explains how to avoid try/catch in Typescript using a wrapper function that returns a tuple with the error and the data of type T.
 
@@ -28,3 +28,4 @@ return promise
 const [error, users] = await catchError(getUsers())
 ```
 
+> **_NOTE:_**   this [ECMAScript Proposal](https://github.com/arthurfiorette/proposal-safe-assignment-operator) will hopefully replace this wrapper function with a more elegant syntax.

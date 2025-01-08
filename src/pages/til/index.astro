@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 
 const allBlogPosts = await getCollection('til');
 
-// Group blog posts by subject
+// Group blog posts by subject and sort subjects alphabetically
 const groupedPosts = allBlogPosts.reduce(
   (acc, entry) => {
     const subject = entry.data.subject;
@@ -16,6 +16,9 @@ const groupedPosts = allBlogPosts.reduce(
   },
   {} as Record<string, (typeof allBlogPosts)[number][]>
 );
+
+// Sort the entries by subject name
+const sortedGroupedPosts = Object.fromEntries(Object.entries(groupedPosts).sort(([a], [b]) => a.localeCompare(b)));
 ---
 
 <MainLayout
@@ -27,12 +30,12 @@ const groupedPosts = allBlogPosts.reduce(
   </p>
   <div class='grid grid-cols-2 xl:grid-cols-3 gap-4'>
     {
-      Object.entries(groupedPosts).map(([subject, entries]) => (
-        <div class='py-8'>
-          <h2 class='~text-xl/3xl font-semibold pb-4 text-blue-400'>{subject}</h2>
-          <ul class='list-decimal list-inside'>
+      Object.entries(sortedGroupedPosts).map(([subject, entries]) => (
+        <div class='py-8' class='group border-l border-l-transparent hover:border-l-zinc-400'>
+          <h2 class='~text-xl/3xl font-semibold pb-4 text-blue-300'>{subject}</h2>
+          <ul>
             {entries.map((entry) => (
-              <li class=' gap-2 sm:gap-4 motion-preset-fade hover:text-blue-400'>
+              <li class=' gap-2 sm:gap-4 motion-preset-fade transition-all border-l-2 border-l-transparent hover:border-l-green-400 hover:pl-2'>
                 <a href={`/til/${entry.data.slug}`}>{entry.data.title}</a>
               </li>
             ))}
