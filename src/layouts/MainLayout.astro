@@ -99,7 +99,7 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
               <a
                 data-astro-prefetch
                 title={link.title}
-                href={isCurrent(link.href) ? '#' : link.href}
+                href={link.href}
                 class='hover:text-primary transition-colors tracking-wider p-1 outline-primary duration-300 border-b border-b-transparent hover:border-b-primary capitalize'
                 class:list={[isCurrent(link.href) ? 'text-primary' : '']}>
                 {link.label}
@@ -147,5 +147,36 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
 <style>
   @view-transition {
     navigation: auto; /* enabled! */
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Hide scrollbar when dialog is open */
+  &:root:has(dialog[open]) {
+    overflow: hidden;
   }
 </style>

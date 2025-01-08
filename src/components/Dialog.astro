@@ -1,0 +1,58 @@
+---
+const { title } = Astro.props;
+console.log(title);
+---
+
+<dialog id='dialog' class='bg-transparent mb-0 mx-0'>
+  <div class='space-y-4 rounded-t-lg p-4 pb-0 bg-zinc-800'>
+    <header class='flex items-center justify-between text-zinc-200'>
+      <h4 class='~text-4xl/6xl font-bold'>{title}</h4>
+      <form method='dialog'>
+        <button class='rounded'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke-width='2'
+            stroke='currentColor'
+            class='size-6'>
+            <path stroke-linecap='round' stroke-linejoin='round' d='M6 18 18 6M6 6l12 12'></path>
+          </svg>
+        </button>
+      </form>
+    </header>
+    <div class='py-2'><slot /></div>
+  </div>
+</dialog>
+
+<style>
+  dialog {
+    --animation-duration: 0.3s;
+    will-change: transform;
+    width: 100vw;
+    max-width: 100%;
+    transform: translateY(100%);
+    transition:
+      transform var(--animation-duration) ease-in-out,
+      overlay var(--animation-duration) allow-discrete,
+      display var(--animation-duration) allow-discrete;
+
+    &[open] {
+      transform: translateY(0);
+    }
+
+    @starting-style {
+      &[open] {
+        transform: translateY(100%);
+      }
+    }
+    &::backdrop {
+      background-color: rgb(0 0 0 / 10%);
+      backdrop-filter: blur(2px);
+      transition:
+        display var(--dialog-animation-duration) allow-discrete,
+        overlay var(--dialog-animation-duration) allow-discrete,
+        background-color var(--dialog-animation-duration);
+    }
+  }
+</style>

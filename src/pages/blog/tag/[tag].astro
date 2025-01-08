@@ -1,0 +1,34 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BlogCard from '@components/BlogCard.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tags = new Set(posts.flatMap((post) => post.data.tags));
+  const postsByTag = new Map( Array.from(tags).map((tag) => [tag, posts.filter((post) => post.data.tags.includes(tag))]) );
+  return Array.from(tags).map((tag) => ({
+    params: { tag },
+    props: {
+      posts: postsByTag.get(tag)
+    }
+  }));
+}
+type Props = {
+  posts: CollectionEntry<'blog'>[];
+};
+
+const {posts} = Astro.props;
+
+---
+
+<MainLayout title={`${Astro.params.tag} | Dario Puddinu`} description={`Articles about ${Astro.params.tag} written by Dario Puddinu`} type='article'>
+  <main class='w-fit'>
+    <div class='pb-4 space-y-4'>
+      <h1 class='~text-4xl/6xl font-bold font-mono uppercase' transition:name='h1'>{Astro.params.tag}</h1>
+    </div>
+    <div class='grid sm:grid-cols-2 md:grid-cols-3 gap-4'>
+      {posts.map((entry) => <BlogCard entry={entry} />)}
+    </div>
+  </main>
+</MainLayout>

@@ -1,35 +1,21 @@
 ---
-import { formatDate } from '@/utils/formatDate';
+import BlogCard from '@components/BlogCard.astro';
+import BlogFilters from '@components/BlogFilters.astro';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
-
 const allBlogPosts = await getCollection('blog');
+const years = Array.from(new Set(allBlogPosts.map((post) => post.data.publishDate.getFullYear())));
 ---
 
 <MainLayout
   title='Blog | Dario Puddinu'
   description='Articles about frontend development, React, Angular, and web technologies written by Dario Puddinu'
   type='blog'>
-  <div class='grid sm:grid-cols-2 md:grid-cols-3 gap-4'>
-    {
-      allBlogPosts.map((entry) => (
-        <a
-          href={`/blog/${entry.id}`}
-          class='relative group hover:bg-blue-600/50 hover:border-blue-600 grid shadow transition-all shadow-zinc-700/20 hover:shadow-zinc-700/50 overflow-hidden rounded-lg border border-neutral-700 ~p-4/8'>
-          <span class='absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600' />
-
-          <div class='space-y-4'>
-            <h2 class='font-bold ~text-xl/3xl'>{entry.data.title}</h2>
-            <p class='~text-base/lg text-zinc-200/70 group-hover:text-zinc-100 transition-colors'>{entry.data.description}</p>
-          </div>
-
-          <dl class='mt-6 flex gap-4 sm:gap-6'>
-            <dl class='flex flex-col-reverse'>
-              <dd class='~text-xs/sm text-blue-200/70 group-hover:text-blue-100 transition-colors'>{formatDate(entry.data.publishDate)}</dd>
-            </dl>
-          </dl>
-        </a>
-      ))
-    }
+  <div class='pb-4 space-y-4'>
+    <h1 class='~text-4xl/6xl font-bold font-mono' transition:name='h1'>Blog</h1>
+    <BlogFilters years={years} />
+  </div>
+  <div class='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+    {allBlogPosts.map((entry) => <BlogCard entry={entry} />)}
   </div>
 </MainLayout>

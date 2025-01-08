@@ -1,0 +1,38 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BlogCard from '@components/BlogCard.astro';
+
+export async function getStaticPaths() {  
+  const posts = await getCollection('blog');
+  const years = new Set(posts.flatMap((post) => post.data.publishDate.getFullYear()));
+  const postsByYear = new Map(
+    Array.from(years).map((year) => [year, posts.filter((post) => post.data.publishDate.getFullYear() === year)])
+  );
+  return Array.from(years).map((year) => ({
+    params: { year },
+    props: {
+      posts: postsByYear.get(year)
+    }
+  }));
+}
+type Props = {
+  posts: CollectionEntry<'blog'>[];
+};
+
+const { posts } = Astro.props;
+---
+
+<MainLayout
+  title={`${Astro.params.year} | Dario Puddinu`}
+  description={`Articles written by Dario Puddinu in ${Astro.params.year}`}
+  type='article'>
+  <main class='w-fit'>
+    <div class='pb-4 space-y-4'>
+      <h1 class='~text-4xl/6xl font-bold font-mono uppercase' transition:name='h1'>{Astro.params.year}</h1>
+    </div>
+    <div class='grid sm:grid-cols-2 md:grid-cols-3 gap-4'>
+      {posts.map((entry) => <BlogCard entry={entry} />)}
+    </div>
+  </main>
+</MainLayout>

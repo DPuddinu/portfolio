@@ -1,5 +1,6 @@
 ---
-title: 'How to Learn Frontend Development Fast'
+title: 'How to Learn Frontend'
+slug: how-to-learn
 description: Effective strategies for mastering frontend concepts quickly
 publishDate: 2025-01-07
 tags:

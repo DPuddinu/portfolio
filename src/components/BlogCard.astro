@@ -1,0 +1,47 @@
+---
+import Tag from '@components/Tag.astro';
+import { formatDate } from '@/utils/formatDate';
+import type { RenderedContent } from 'astro:content';
+
+export interface Props {
+  entry: {
+    id: string;
+    body?: string;
+    collection: 'blog';
+    data: any;
+    rendered?: RenderedContent;
+    filePath?: string;
+  };
+}
+const { entry } = Astro.props;
+---
+
+<div
+  transition:name={`blog-${entry.id}`}
+  class='relative group hover:bg-blue-600/50 grid-flow-row hover:border-blue-600 gap-4 grid grid-rows-[auto,1fr,auto] shadow transition-all shadow-zinc-700/20 hover:shadow-zinc-700/50 overflow-hidden rounded-lg border border-neutral-700 ~p-4/8 ~pb-6/8'>
+  <span class='absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'></span>
+  <div>
+    <h2 class='font-bold ~text-xl/3xl'>
+      <a href={`/blog/${entry.data.slug}`}>{entry.data.title}</a>
+    </h2>
+  </div>
+  <div class='flex flex-col justify-center'>
+    <p class='~text-base/lg text-zinc-200/70 group-hover:text-zinc-100 transition-colors line-clamp-4'>
+      {entry.data.description}
+    </p>
+  </div>
+  <dl class='flex gap-2 justify-between items-center flex-wrap'>
+    <div class='flex gap-2'>
+      {
+        entry.data.tags.map((tag: string) => (
+          <Tag>
+            <a href={`/blog/tag/${tag}`}>{tag}</a>
+          </Tag>
+        ))
+      }
+    </div>
+    <dd class='~text-xs/sm text-blue-200/70 group-hover:text-blue-100 transition-colors'>
+      {formatDate(entry.data.publishDate)}
+    </dd>
+  </dl>
+</div>

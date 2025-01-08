@@ -1,9 +1,10 @@
 ---
 title: '2024 - Recap'
+slug: recap-2024
 description: My last year's recap.
-publishDate: 2025-01-02
+publishDate: 2024-01-02
 tags:
-  - astro
+  - life
 ---
 
 # **2024 - RECAP**
