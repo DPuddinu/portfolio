@@ -12,7 +12,9 @@ const lastBlogPosts = allBlogPosts
 const viewMore = allBlogPosts.length > lastBlogPosts.length;
 ---
 
-<MainLayout title='Portfolio'>
+<MainLayout
+  title='Dario Puddinu portfolio'
+  description='This is the homepage of Dario Puddinu portfolio, Dario Puddinu is a frontend developer based in Sassari with over 5 years of experience, you can find here the latest blog posts and the work experience'>
   <div class='grid md:grid-cols-[1fr,auto] ~gap-4/24'>
     <section>
       <article class='flex flex-col gap-4'>
@@ -101,7 +103,7 @@ const viewMore = allBlogPosts.length > lastBlogPosts.length;
             </a>
             <a
               href='/cv.pdf'
-              class='px-4 bg-zinc-300 cursor-pointer rounded-r-lg place-content-center '
+              class='px-4 bg-zinc-300 cursor-pointer rounded-r-lg place-content-center'
               aria-label='Download CV'
               download>
               <Download />

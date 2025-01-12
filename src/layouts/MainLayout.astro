@@ -52,7 +52,6 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
 <html lang='en' class='min-h-dvh scroll-bar'>
   <head>
     <link rel='sitemap' href='/sitemap-index.xml' />
-
     <SEO
       title={title}
       description={description}
@@ -61,19 +60,10 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
           title,
           type,
           image
-        },
-        optional: {
-          description,
-          siteName: 'Dario Puddinu'
         }
       }}
       twitter={{
-        card: 'summary_large_image',
-        site: '@your_twitter',
-        creator: '@your_twitter',
-        title,
-        description,
-        image
+        creator: '@dpdev92'
       }}
       extend={{
         meta: [
