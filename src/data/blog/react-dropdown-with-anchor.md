@@ -99,25 +99,25 @@ export default Dropdown;
 .popoverContent {
   --animation-duration: 0.2s;
 
-  @apply m-0 mt-1 rounded-lg border-0 bg-base-300 p-2 text-base-content shadow;
+  @apply m-0 mt-1 rounded-lg border border-base-100 bg-base-300 p-2 text-base-content shadow;
 
-  transition:
-    opacity var(--animation-duration) ease-in-out,
-    overlay var(--animation-duration) allow-discrete,
-    display var(--animation-duration) allow-discrete;
-
-  &[popover]:popover-open {
-    opacity: 1;
-  }
   &[popover] {
+    display: none;
     opacity: 0;
-  }
+    transition:
+      opacity var(--animation-duration) ease-in-out,
+      overlay var(--animation-duration) allow-discrete,
+      display var(--animation-duration) allow-discrete;
+      
+    &:popover-open {
+      opacity: 1 !important;
+      display: block !important;
 
-  @starting-style {
-    &[popover]:popover-open {
-      opacity: 0;
+      @starting-style {
+        opacity: 0;
+        display: none;
+      }
     }
   }
 }
-
 ```
