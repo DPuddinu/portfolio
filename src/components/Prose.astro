@@ -6,7 +6,7 @@ const { class: className } = Astro.props;
 ---
 
 <div
-    class:list={[className]}
+  class:list={[className]}
   class={`space-y-4
   prose-h1:~text-4xl/6xl
   prose-h2:~text-3xl/4xl
@@ -17,15 +17,25 @@ const { class: className } = Astro.props;
   prose-p:text-base/lg
   prose-p:max-w-[60em]
   prose-li:first-letter:capitalize
-  prose-li:list-disc prose-li:ml-5 prose-li:max-w-[30em]
-  prose-hr:opacity-30 prose-hr:border-[1px] prose-hr:rounded-full
+  prose-li:list-disc 
+  prose-li:ml-5 
+  prose-li:max-w-[30em]
+  prose-hr:opacity-30 
+  prose-hr:border-[1px] 
+  prose-hr:rounded-full
   prose-time:text-2xl 
   prose-b:font-bold
   prose-pre:rounded-lg
   prose-pre:p-4
-  prose-a:text-blue-400
+prose-a:text-blue-400
   prose-a:underline
   prose-a:underline-offset-4
+prose-code:bg-gray-600
+prose-code:text-white
+  prose-code:rounded-lg
+  prose-code:p-1
+  prose-code:font-mono
+  [&>pre>code]:!bg-transparent
   overflow-auto
   font-afacad
   scroll-bar
