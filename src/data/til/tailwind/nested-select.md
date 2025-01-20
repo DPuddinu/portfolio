@@ -5,6 +5,7 @@ subject: 'Tailwind CSS'
 description: How to select nested elements with Tailwind CSS.
 publishDate: 2025-01-13
 tags:
+  - Tailwind
   - javascript
 ---
 
