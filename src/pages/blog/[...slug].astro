@@ -1,5 +1,6 @@
 ---
 import Prose from '@/components/Prose.astro';
+import { formatDate } from '@/utils/formatDate';
 import MainLayout from '@layouts/MainLayout.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
@@ -17,7 +18,10 @@ const { Content } = await render(post);
 ---
 
 <MainLayout title={post.data.title} description={post.data.description} type='article' image={post.data.image}>
-  <Prose class='[&>h1]:text-blue-200'>
-    <Content />
-  </Prose>
+  <div class='flex flex-col gap-8 font-afacad'>
+    <Prose class='[&>h1]:text-blue-200/80'> <Content /></Prose>
+    <p class='~text-base/lg font-semibold p-1 px-2 rounded bg-neutral-600/50 w-fit text-neutral-300'>
+      {formatDate(post.data.publishDate)}
+    </p>
+  </div>
 </MainLayout>
