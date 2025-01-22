@@ -19,29 +19,61 @@ const groupedPosts = allBlogPosts.reduce(
 
 // Sort the entries by subject name
 const sortedGroupedPosts = Object.fromEntries(Object.entries(groupedPosts).sort(([a], [b]) => a.localeCompare(b)));
+
+// Calculate entries by year
+const entriesByYear = allBlogPosts.reduce(
+  (acc, entry) => {
+    const year = new Date(entry.data.publishDate).getFullYear();
+    acc[year] = (acc[year] || 0) + 1;
+    return acc;
+  },
+  {} as Record<number, number>
+);
+
+// Sort years in descending order
+const sortedYears = Object.entries(entriesByYear).sort(([yearA], [yearB]) => Number(yearB) - Number(yearA));
 ---
 
 <MainLayout
   title='Today I Learnt'
   description='Today I Learnt is a collection of code snippets I use in my daily work. Written by Dario Puddinu'>
-  <h1 class='~text-4xl/6xl font-bold font-mono' transition:name='h1'>Today I Learnt</h1>
-  <p class='text-lg text-neutral-300 py-4 text-balance'>
-    Inspired by Stefan Judis, these are the little facts I learnt in my daily life as a Frontend Engineer.
-  </p>
-  <div class='grid grid-cols-2 xl:grid-cols-3 gap-4'>
-    {
-      Object.entries(sortedGroupedPosts).map(([subject, entries]) => (
-        <div class='py-8' class='group border-l border-l-transparent hover:border-l-zinc-400'>
-          <h2 class='~text-xl/3xl font-semibold pb-4 text-blue-300'>{subject}</h2>
-          <ul>
-            {entries.map((entry) => (
-              <li class=' gap-2 sm:gap-4 motion-preset-fade transition-all border-l-2 border-l-transparent hover:border-l-green-400 hover:pl-2'>
-                <a href={`/til/${entry.data.slug}`}>{entry.data.title}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
+  <div class='flex flex-col md:flex-row gap-8'>
+    <div class='flex-1'>
+      <h1 class='~text-4xl/6xl font-bold font-mono' transition:name='h1'>Today I Learnt</h1>
+      <p class='text-lg text-neutral-300 py-4 text-balance'>
+        Inspired by Stefan Judis, these are the little facts I learnt in my daily life as a Frontend Engineer.
+      </p>
+      <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+        {
+          Object.entries(sortedGroupedPosts).map(([subject, entries]) => (
+            <div class='~py-1/4'>
+              <h2 class='~text-xl/3xl font-semibold pb-4 text-blue-300'>{subject}</h2>
+              <ul>
+                {entries.map((entry) => (
+                  <li class='gap-2 sm:gap-4 motion-preset-fade transition-all border-l-2 border-l-transparent hover:border-l-green-400 hover:pl-2'>
+                    <a href={`/til/${entry.data.slug}`}>{entry.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class='w-full md:w-48 shrink-0'>
+      <h2 class='text-xl font-semibold mb-4'>Timeline</h2>
+      <div class='space-y-4'>
+        {
+          sortedYears.map(([year, count]) => (
+            <div class='flex items-center gap-2'>
+              <div class='text-neutral-300'>{year}</div>
+              <div class='h-[2px] flex-1 bg-neutral-800' />
+              <div class='text-neutral-300 font-mono'>{count}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </MainLayout>
