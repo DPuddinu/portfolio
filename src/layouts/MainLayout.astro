@@ -2,6 +2,7 @@
 import { SEO } from 'astro-seo';
 import { isCurrentPage } from '@/utils/isCurrentPage';
 import Menu from '@components/Menu.astro';
+import { Analytics } from '@vercel/analytics/next';
 
 type Props = {
   title: string;
@@ -111,6 +112,7 @@ const isCurrent = (href: string) => isCurrentPage(Astro.url.pathname, href);
         </nav>
       </footer>
     </div>
+    <Analytics />
   </body>
 </html>
 <style is:global>
