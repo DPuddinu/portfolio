@@ -1,6 +1,7 @@
 ---
 import type { Link } from '@layouts/MainLayout.astro';
 import { isCurrentPage } from '@/utils/isCurrentPage';
+import ThemeToggle from './ThemeToggle.astro';
 type Props = {
   links: Link[];
 };
@@ -13,21 +14,24 @@ const isHome = Astro.url.pathname === '/';
   <div class='gap-2 flex justify-between items-center w-full'>
     <a
       href={isHome ? '#' : '/'}
-      class='font-bold bg-zinc-700 tracking-wide rounded-full size-10 text-center place-content-center active:bg-zinc-600 transition-colors'>
+      class='font-bold bg-surface shadow-sm text-text tracking-wide rounded-full size-10 text-center place-content-center active:bg-muted/20 transition-colors'>
       DP
     </a>
-    <button popovertarget='mypopover' aria-label='Open menu' aria-expanded='false' aria-controls='mypopover'>
-      <svg
-        width='1.5rem'
-        height='1.5rem'
-        class='stroke-zinc-200 scale-x-[-1] active:scale-x-[-1.05] active:stroke-primary transition-colors'
-        viewBox='0 0 24 24'
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'
-        aria-hidden='true'>
-        <path d='M4 6H20M4 12H14M4 18H9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
-      </svg>
-    </button>
+    <div class='flex items-center gap-2'>
+      <ThemeToggle />
+      <button popovertarget='mypopover' aria-label='Open menu' aria-expanded='false' aria-controls='mypopover'>
+        <svg
+          width='1.5rem'
+          height='1.5rem'
+          class='stroke-text scale-x-[-1] active:scale-x-[-1.05] active:stroke-primary transition-colors'
+          viewBox='0 0 24 24'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          aria-hidden='true'>
+          <path d='M4 6H20M4 12H14M4 18H9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
+        </svg>
+      </button>
+    </div>
   </div>
   <div
     transition:name='menu'
@@ -37,7 +41,7 @@ const isHome = Astro.url.pathname === '/';
     aria-label='Site navigation'
     class='m-0 w-full bg-transparent p-4 motion-translate-x-in-100 -motion-translate-y-in-75 motion-duration-300'>
     <div class='flex w-full justify-end'>
-      <div class='w-full bg-zinc-700 rounded-2xl p-4 relative'>
+      <div class='w-full bg-surface shadow-xl border border-muted/10 rounded-2xl p-4 relative'>
         <button
           popovertarget='mypopover'
           class='font-mono text-current ~text-2xl/4xl font-bold absolute right-4'
@@ -45,7 +49,7 @@ const isHome = Astro.url.pathname === '/';
           <svg
             width='1rem'
             height='1rem'
-            class='stroke-zinc-200'
+            class='stroke-text'
             viewBox='-0.5 0 25 25'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
@@ -55,7 +59,7 @@ const isHome = Astro.url.pathname === '/';
           </svg>
         </button>
         <nav aria-label='Main navigation'>
-          <ul class='flex flex-col text-zinc-200 gap-4 py-2' role='menubar'>
+          <ul class='flex flex-col text-text gap-4 py-2' role='menubar'>
             {
               links.map((link) => (
                 <li class='py-1' role='none'>
@@ -68,7 +72,7 @@ const isHome = Astro.url.pathname === '/';
                     aria-current={isCurrent(link.href) ? 'page' : undefined}>
                     {link.label}
                   </a>
-                  <div class='border-b-[0.5px] border-zinc-600 w-full pt-1' aria-hidden='true' />
+                  <div class='border-b-[0.5px] border-muted/20 w-full pt-1' aria-hidden='true' />
                 </li>
               ))
             }

@@ -6,13 +6,13 @@ const { years } = Astro.props;
 ---
 <div class='relative'>
   <button
-    class='group px-2 py-1 rounded-md border border-neutral-700 bg-neutral-800 text-neutral-200 relative inline-block'>
+    class='group px-2 py-1 rounded-md border border-muted/30 bg-surface text-text relative inline-block'>
     <span>Select Year</span>
-    <div class='group-focus-within:block hidden absolute z-10 bg-neutral-800 border border-neutral-700 rounded mt-2 w-full left-0 motion-preset-fade motion-duration-200'>
-      <a href='/blog' class='block py-2 text-neutral-200 hover:bg-neutral-700'>All</a>
+    <div class='group-focus-within:block hidden absolute z-10 bg-surface border border-muted/30 rounded mt-2 w-full left-0 motion-preset-fade motion-duration-200'>
+      <a href='/blog' class='block py-2 text-text hover:bg-muted/10'>All</a>
       {
         years.map((year) => (
-          <a href={`/blog/year/${year}`} class='block py-2 text-neutral-200 hover:bg-neutral-700'>
+          <a href={`/blog/year/${year}`} class='block py-2 text-text hover:bg-muted/10'>
             {year}
           </a>
         ))

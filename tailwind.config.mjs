@@ -7,6 +7,7 @@ export default {
     files: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     extract
   },
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -15,8 +16,12 @@ export default {
         mono: ['"GeistMono"', ...defaultTheme.fontFamily.mono]
       },
       colors: {
-        primary: '#fcba03',
-        secondary: '#496080'
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+        background: 'rgb(var(--color-background) / <alpha-value>)',
+        text: 'rgb(var(--color-text) / <alpha-value>)',
+        muted: 'rgb(var(--color-muted) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)'
       }
     },
     screens,

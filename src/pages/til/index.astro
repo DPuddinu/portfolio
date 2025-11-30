@@ -40,7 +40,7 @@ const sortedYears = Object.entries(entriesByYear).sort(([yearA], [yearB]) => Num
   <div class='flex flex-col md:flex-row gap-8'>
     <div class='flex-1'>
       <h1 class='~text-4xl/6xl font-bold font-mono' transition:name='h1'>Today I Learnt</h1>
-      <p class='text-lg text-neutral-300 py-4 text-balance'>
+      <p class='text-lg text-text py-4 text-balance'>
         Inspired by Stefan Judis, these are the little facts I learnt in my daily life as a Frontend Engineer. <br />
         Since I started writing this blog in 2025, most of the things I've learned are not included yet. <br />I will
       </p>
@@ -48,10 +48,10 @@ const sortedYears = Object.entries(entriesByYear).sort(([yearA], [yearB]) => Num
         {
           Object.entries(sortedGroupedPosts).map(([subject, entries]) => (
             <div class='~py-1/4'>
-              <h2 class='~text-xl/3xl font-semibold pb-4 text-blue-300'>{subject}</h2>
+              <h2 class='~text-xl/3xl font-semibold pb-4 text-primary'>{subject}</h2>
               <ul>
                 {entries.map((entry) => (
-                  <li class='gap-2 sm:gap-4 motion-preset-fade transition-all border-l-2 border-l-transparent hover:border-l-green-400 hover:pl-2'>
+                  <li class='gap-2 sm:gap-4 motion-preset-fade transition-all border-l-2 border-l-transparent hover:border-l-primary hover:pl-2'>
                     <a href={`/til/${entry.data.slug}`}>{entry.data.title}</a>
                   </li>
                 ))}
@@ -68,9 +68,9 @@ const sortedYears = Object.entries(entriesByYear).sort(([yearA], [yearB]) => Num
         {
           sortedYears.map(([year, count]) => (
             <div class='flex items-center gap-2'>
-              <div class='text-neutral-300'>{year}</div>
-              <div class='h-[2px] flex-1 bg-neutral-800' />
-              <div class='text-neutral-300 font-mono'>{count}</div>
+              <div class='text-muted'>{year}</div>
+              <div class='h-[2px] flex-1 bg-muted/20' />
+              <div class='text-muted font-mono'>{count}</div>
             </div>
           ))
         }

@@ -1,18 +1,23 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import Skills from '@components/icons/Skills.astro';
+import { calculateAge, calculateExperienceYears } from '@utils/getAgeAndExperience';
+
+const experienceYears = calculateExperienceYears(new Date('2019-07-01'));
+const age = calculateAge(new Date('1992-02-01'));
 ---
 
 <MainLayout
   title='About | Dario Puddinu'
-  description='Dario Puddinu is a Senior Frontend Developer with over 5 years of experience in React, Angular, and NextJS'
+  description={`Dario Puddinu is a Senior Frontend Developer with over ${experienceYears} years of experience in Angular, React and NextJS`}
   type='profile'>
-  <div class='text-neutral-300 font-afacad'>
+  <div class='text-text font-afacad'>
     <section class='grid md:grid-cols-[1fr_auto] ~gap-8/16'>
       <article class='[&>p]:max-w-[60em]'>
         <header class='~text-4xl/6xl font-bold' transition:name='h1'>So, who am I?</header>
         <p class='~pt-4/8 ~text-xl/2xl'>
-          Hi! I'm Dario, a 32-year-old frontend developer originally from Sardinia, Italy.
+          Hi! I'm Dario, a {age} year old frontend developer with {experienceYears} years of experience originally from Sardinia,
+          Italy.
         </p>
         <br />
         <p class='~text-lg/xl'>
@@ -26,60 +31,112 @@ import Skills from '@components/icons/Skills.astro';
         </p>
         <p class='pt-2 ~text-lg/xl'>
           My professional path has led me to work as a consultant for several notable companies, including:
-          <ul class='list-disc list-inside [&>li]:underline [&>li]:text-base'>
+          <ul class='mt-4 space-y-2 [&>li]:list-none [&>li]:pl-0'>
             <li>
-              <a href='https://www.alkemy.com/' target='_blank'>Alkemy</a>
+              <a
+                href='https://bizaway.com'
+                target='_blank'
+                rel='noreferrer'
+                class='inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group'>
+                <span class='w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform'></span>
+                Bizaway
+              </a>
             </li>
             <li>
-              <a href='https://www.repower.com/' target='_blank'>RePower</a>
+              <a
+                href='https://www.alkemy.com/'
+                target='_blank'
+                class='inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group'>
+                <span class='w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform'></span>
+                Alkemy
+              </a>
             </li>
             <li>
-              <a href='https://www.abissi.eu/' target='_blank'>Abissi</a>
+              <a
+                href='https://www.repower.com/'
+                target='_blank'
+                class='inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group'>
+                <span class='w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform'></span>
+                RePower
+              </a>
             </li>
             <li>
-              <a href='https://www.abinsula.com/' target='_blank'>Abinsula</a>
+              <a
+                href='https://www.abissi.eu/'
+                target='_blank'
+                class='inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group'>
+                <span class='w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform'></span>
+                Abissi
+              </a>
             </li>
             <li>
-              <a href='https://www.degustiamo.com/' target='_blank'>Degustiamo</a>
+              <a
+                href='https://www.abinsula.com/'
+                target='_blank'
+                class='inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group'>
+                <span class='w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform'></span>
+                Abinsula
+              </a>
             </li>
             <li>
-              <a href='https://www.energyteam.it/' target='_blank'>EnergyTeam</a>
+              <a
+                href='https://www.degustiamo.com/'
+                target='_blank'
+                class='inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group'>
+                <span class='w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform'></span>
+                Degustiamo
+              </a>
             </li>
             <li>
-              <a href='https://www.metweb.it/metpay.html' target='_blank'>Metweb</a>
+              <a
+                href='https://www.energyteam.it/'
+                target='_blank'
+                class='inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group'>
+                <span class='w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform'></span>
+                EnergyTeam
+              </a>
+            </li>
+            <li>
+              <a
+                href='https://www.metweb.it/metpay.html'
+                target='_blank'
+                class='inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group'>
+                <span class='w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform'></span>
+                Metweb
+              </a>
             </li>
           </ul>
-          <span class='pt-2'>And more...</span>
+          <span class='mt-4 block'>And more...</span>
         </p>
       </article>
       <article>
         <header class='~text-2xl/4xl font-mono font-semibold tracking-wide flex gap-4 items-end'>
           <Skills /> Skills
         </header>
-        <ul class='space-y-2 pt-4 text-neutral-300 text-lg [&>li]:grid [&>li]:grid-cols-2 [&>li]:gap-8'>
+        <ul class='space-y-2 pt-4 text-text text-lg [&>li]:grid [&>li]:grid-cols-2 [&>li]:gap-8'>
           <li>
             <span>Angular</span>
-            <span class='text-yellow-400'>★★★★☆</span>
+            <span class='text-primary'>★★★★☆</span>
           </li>
           <li>
             <span>React</span>
-            <span class='text-yellow-400'>★★★★★</span>
+            <span class='text-primary'>★★★★★</span>
           </li>
           <li>
             <span>Next.js</span>
-            <span class='text-yellow-400'>★★★★★</span>
+            <span class='text-primary'>★★★★★</span>
           </li>
           <li>
             <span>JavaScript</span>
-            <span class='text-yellow-400'>★★★★★</span>
+            <span class='text-primary'>★★★★★</span>
           </li>
           <li>
             <span>TypeScript</span>
-            <span class='text-yellow-400'>★★★★☆</span>
+            <span class='text-primary'>★★★★☆</span>
           </li>
           <li>
             <span>HTML & CSS</span>
-            <span class='text-yellow-400'>★★★★★</span>
+            <span class='text-primary'>★★★★★</span>
           </li>
         </ul>
       </article>
