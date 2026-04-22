@@ -16,22 +16,22 @@ export interface Props {
 const { entry } = Astro.props;
 ---
 
-<div
-  transition:name={`blog-${entry.id}`}
-  class='relative group hover:bg-surface max-w-xl grid-flow-row hover:border-primary gap-4 grid grid-rows-[auto,1fr,auto] shadow transition-all shadow-muted/20 hover:shadow-muted/40 overflow-hidden rounded-lg border border-muted/30 ~p-4/8 ~pb-6/8'>
-  <span class='absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500'></span>
+  <div
+    transition:name={`blog-${entry.id}`}
+    class='relative group hover:bg-surface max-w-xl h-fit grid-flow-row hover:border-primary gap-4 grid grid-rows-[auto,1fr,auto] shadow transition-all shadow-muted/20 hover:shadow-muted/40 rounded-lg border border-muted/30 ~p-4/8 ~pb-6/8'>
+  <span class='absolute inset-x-0 bottom-0 rounded-b-lg h-2 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500'></span>
   <div>
-    <h2 class='font-bold ~text-xl/3xl w-fit'>
+    <h2 class='font-bold ~text-xl/3xl break-words'>
       <a href={`/blog/${entry.data.slug}`} class='transition-colors hover:text-primary'>{entry.data.title}</a>
     </h2>
   </div>
   <div class='flex flex-col justify-center'>
-    <p class='~text-base/lg text-muted group-hover:text-text transition-colors line-clamp-4'>
+    <p class='~text-base/lg text-muted group-hover:text-text transition-colors break-words'>
       {entry.data.description}
     </p>
   </div>
-  <dl class='flex gap-2 justify-between items-center flex-wrap'>
-    <div class='flex gap-2'>
+  <dl class='flex gap-2 flex-col'>
+    <div class='flex gap-2 flex-wrap'>
       {
         entry.data.tags.map((tag: string) => (
           <Tag>
