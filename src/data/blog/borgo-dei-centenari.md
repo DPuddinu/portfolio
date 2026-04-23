@@ -38,7 +38,7 @@ To ensure the best possible experience for potential guests, speed was the top p
 
 - **Framework**: [Astro](https://astro.build/) for the static-first frontend.
 - **Backend**: [Convex](https://www.convex.dev/) for real-time data management in the backoffice.
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (using `size-*` utilities for better consistency).
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Deployment**: [Vercel](https://vercel.com/) for hosting and build automation.
 - **Email**: [Resend](https://resend.com/) for booking confirmations.
 
